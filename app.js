@@ -4,10 +4,15 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var winston = require('winston');
 
 var index = require('./routes/index');
 
 var app = express();
+var argv = require('minimist')(process.argv.slice(2));
+
+// creating a new subpath
+var subpath = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -21,6 +26,27 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//adding subpath for swagger
+app.use("/v1", subpath);
+var swagger = require('swagger-node-express').createNew(subpath);
+app.use(express.static('dist'));
+swagger.setApiInfo({
+    title: "Bookseller API",
+    description: "Rest API to mange their handling",
+    termsOfServiceUrl: "",
+    contact: "",
+    license: "",
+    licenseUrl: ""
+});
+
+app.get('/', function (req, res) {
+    res.sendFile(__dirname + '/dist/index.html');
+});
+swagger.configureSwaggerPaths('', 'api-docs', '');
+swagger.configure('localhost:3000', '1.0.0');
+
+
+//routing path specifications
 app.use('/', index);
 app.use('/books',books);
 app.use('/products',products);
