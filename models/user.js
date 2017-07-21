@@ -20,6 +20,7 @@ const facebookSchema = new Schema ({
 });
 
 
+
 const User = mongoose.model('User', userSchema);
 const facebook = mongoose.model('facebook', facebookSchema);
 

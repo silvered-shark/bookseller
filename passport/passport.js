@@ -3,6 +3,9 @@
  */
 const configAuth = require('./auth');
 const FacebookStrategy = require('passport-facebook').Strategy;
+
+const GoogleStrategy = require('passport-google-oauth').OAuthStrategy;
+
 const userFacebook = require('../models/user.js');
 
 module.exports = function (passport) {
@@ -34,6 +37,29 @@ module.exports = function (passport) {
                              }
                           });
                       }
+                });
+
+            });
+
+        }
+    ));
+
+
+    passport.use(new GoogleStrategy({
+            consumerKey: configAuth.GmailAuth.clientID,
+            consumerSecret: configAuth.GmailAuth.clientSecret,
+            callbackURL: configAuth.GmailAuth.callbackURL
+        },
+        function(token, tokenSecret, profile, done) {
+            process.nextTick(function () {
+                User.findOne({googleId: profile.id}, function (err, user) {
+                    if(err)
+                        return done(err);
+                    if(user)
+                        return done(null, user);
+                    else{
+
+                    }
                 });
 
             });

@@ -33,6 +33,15 @@ app.get('/auth/facebook/callback',
     passport.authenticate('facebook', { successRedirect: '/profile',
         failureRedirect: '/' }));
 
+app.get('/auth/google',
+    passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login'] }));
+
+app.get('/auth/google/callback',
+    passport.authenticate('google', { failureRedirect: '/' }),
+    function(req, res) {
+        res.redirect('/profile');
+    });
+
 
 //adding subpath for swagger
 app.use("/v1", subpath);
