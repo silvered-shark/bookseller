@@ -12,6 +12,15 @@ const userSchema = new Schema({
 
 });
 
+const facebookSchema = new Schema ({
+   id : string,
+   token : string,
+   email : string,
+   name : string
+});
+
 
 const User = mongoose.model('User', userSchema);
+const facebook = mongoose.model('facebook', facebookSchema);
+
 exports.module = User;
