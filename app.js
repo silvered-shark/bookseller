@@ -28,11 +28,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //routing path specifications
 require('./routes/index')(app, passport);
+require('./passport/passport')(passport);
 app.use('/books',books);
 app.use('/products',products);
 app.use('/sell',sell);
 
+passport.serializeUser(function(user, done) {
+    done(null, user);
+});
 
+passport.deserializeUser(function(user, done) {
+    done(null, user);
+});
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
