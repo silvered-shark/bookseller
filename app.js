@@ -5,12 +5,11 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var winston = require('winston');
-
+var passport = require('passport');
 var index = require('./routes/index');
 var books = require('./routes/books');
 var products = require('./routes/products');
 var sell = require('./routes/sell');
-var passport = require('passport');
 
 var app = express();
 
@@ -26,10 +25,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(passport.initialize());
 
 //routing path specifications
-app.use('/', index);
+require('./routes/index')(app, passport);
 app.use('/books',books);
 app.use('/products',products);
 app.use('/sell',sell);
