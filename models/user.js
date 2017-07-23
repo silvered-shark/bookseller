@@ -1,27 +1,24 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+var con_user = mongoose.createConnection("localhost:27017/bookseller");
 
 const userSchema = new Schema({
 
     name : String,
     email : String,
     mobile  : Number,
-    book : [{type : Schema.types.ObjectId, ref: 'Book'}],
+    book : [{type : Schema.Types.ObjectId, ref: 'Book'}],
     gender  : {enum :['Male', 'Female']},
-    product : [{type : Schema.types.ObjectId, ref :'Product'}]
-
-});
-
-const facebookSchema = new Schema ({
-   id : string,
-   token : string,
-   email : string,
-   name : string
+    product : [{type : Schema.Types.ObjectId, ref :'Product'}],
+    facebook : {
+        id : String,
+        token : String
+    }
 });
 
 
 
-const User = mongoose.model('User', userSchema);
-const facebook = mongoose.model('facebook', facebookSchema);
 
-exports.module = User;
+const User = con_user.model('User', userSchema);
+
+module.exports = User;

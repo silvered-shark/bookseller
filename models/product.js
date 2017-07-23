@@ -1,5 +1,17 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+var con_product = mongoose.createConnection("localhost:27017/bookseller");
+
+
+
+const sellingInfoSchema = new Schema({
+
+    postedDate : { type : Date, index : true},
+    seller : { type : Schema.Types
+        .ObjectId, ref : "user"}
+
+});
+
 
 const productSchema = new Schema ({
 
@@ -10,12 +22,6 @@ const productSchema = new Schema ({
 });
 
 
-const sellingInfoSchema = new Schema({
-
-    postedDate : { type : Date, index : true},
-    seller : { type : Schema.type.ObjectId, ref : "user"}
-
-});
 
 
 //check availability of product
@@ -27,5 +33,5 @@ productSchema.method.isAvailable = function(callback) {
 }
 
 
-const Product = mongoose.model('Product', productSchema);
-exports.module = Product;
+const Product = con_product.model('Product', productSchema);
+module.exports = Product;

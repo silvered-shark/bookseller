@@ -2,11 +2,12 @@
  * Created by sachin on 21/7/17.
  */
 const configAuth = require('./auth');
+
 const FacebookStrategy = require('passport-facebook').Strategy;
 
 const GoogleStrategy = require('passport-google-oauth').OAuthStrategy;
 
-const userFacebook = require('../models/user.js');
+const User = require('../models/user.js');
 
 module.exports = function (passport) {
 
@@ -23,17 +24,17 @@ module.exports = function (passport) {
                       if(user)
                           return done(null, user);
                       else{
-                          var userFacebook = new userFacebook();
-                          userFacebook.facebook.id = profile.id;
-                          userFacebook.facebook.token = accessToken;
-                          userFacebook.facebook.name = profile.name.givenName + " " + profile.name.familyName ;
-                          userFacebook.facebook.email = profile.emails[0].value;
+                          var newuser = new User();
+                          newuser.facebook.id = profile.id;
+                          newuser.facebook.token = accessToken;
+                          newuser.name = profile.name.givenName + " " + profile.name.familyName ;
+                          newuser.email = profile.emails[0].value;
 
-                          userFacebook.save(function (err) {
+                          newuser.save(function (err) {
                              if(err)
                                  return done(err);
                              else{
-                                 return done(null, userFacebook);
+                                 return done(null, newuser);
                              }
                           });
                       }

@@ -1,5 +1,16 @@
-const maongoose = require('mongoose');
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+var con_book = mongoose.createConnection("localhost:27017/bookseller");
+
+
+const sellingInfoSchema = new Schema({
+
+    postedDate : { type : Date, default : Date.now() },
+    seller : { type : Schema.Types.ObjectId, ref : "user"}
+
+});
+
+
 
 const bookSchema = new Schema({
 
@@ -10,13 +21,6 @@ const bookSchema = new Schema({
 
 });
 
-
-const sellingInfoSchema = new Schema({
-
-    postedDate : { type : Date, default : Date.now() },
-    seller : { type : Schema.type.ObjectId, ref : "user"}
-
-});
 
 
 
@@ -51,5 +55,5 @@ bookSchema.method.findSimilar = function (callback2) {
 
 }
 
-const Book = mongoose.model('Book', bookschema);
-exports.module = Book;
+const Book = con_book.model('Book', bookSchema);
+module.exports = Book;

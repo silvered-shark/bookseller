@@ -3,7 +3,7 @@ var router = express.Router();
 
 // defining all routes
 // TODO: setting patch request for Products
-var Product = require('../models/Product');
+var Product = require('../models/product');
 
 
 
@@ -248,7 +248,6 @@ router.route('/{Productname}/sellers')
 
 router.route('/{Productname}/sellers/{sellerId}')
     .get(getSeller)
-    .put(updateSellerByProduct)
     .delete(deleteByProduct);
 
 module.exports = router;

@@ -40,7 +40,7 @@ const getByName = function (req, res, next) {
 };
 
 
-addOne = function (req, res, next) {
+const addOne = function (req, res, next) {
 
     var Book = new Book();
 
@@ -58,9 +58,11 @@ addOne = function (req, res, next) {
         if(err)
             throw err;
         res.send("Created user");
-        res.json(Book);
+
 
     })
+
+    res.end();
 
 
 }
@@ -248,7 +250,6 @@ router.route('/{bookname}/sellers')
 
 router.route('/{bookname}/sellers/{sellerId}')
      .get(getSeller)
-     .put(updateSellerByBook)
      .delete(deleteByBook);
 
 
