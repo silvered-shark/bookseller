@@ -2,6 +2,8 @@ var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
+var hbs = require('hbs');
+var hbsHelpers = require('./helpers/helpers')(hbs);
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var winston = require('winston');
@@ -13,13 +15,16 @@ var sell = require('./routes/sell');
 
 var app = express();
 
+//hbs helpers
+hbs.registerPartials(__dirname + '/views/partials');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'hbs');
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+//app.use(path.join(__dirname, 'public', 'favicon.ico'));
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -34,14 +39,10 @@ app.use('/products',products);
 app.use('/sell',sell);
 
 passport.serializeUser(function(user, done) {
-    //console.log(req.session.passport.user);
-
     done(null, user.facebook.id);
-
 });
 
 passport.deserializeUser(function(user, done) {
-
     done(null, user);
 });
 // catch 404 and forward to error handler
