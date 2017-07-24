@@ -34,12 +34,14 @@ app.use('/products',products);
 app.use('/sell',sell);
 
 passport.serializeUser(function(user, done) {
-    console.log(user);
-    done(null, user);
+    //console.log(req.session.passport.user);
+
+    done(null, user.facebook.id);
 
 });
 
 passport.deserializeUser(function(user, done) {
+
     done(null, user);
 });
 // catch 404 and forward to error handler
