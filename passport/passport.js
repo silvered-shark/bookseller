@@ -14,21 +14,26 @@ module.exports = function (passport) {
     passport.use(new FacebookStrategy({
             clientID: configAuth.facebookAuth.clientID,
             clientSecret: configAuth.facebookAuth.clientSecret,
-            callbackURL: configAuth.facebookAuth.callbackURL
-        },
+            callbackURL: configAuth.facebookAuth.callbackURL,
+            profileFields: ['id', 'email', 'gender', 'link',  'name', 'verified']
+       },
         function(accessToken, refreshToken, profile, done) {
             process.nextTick(function () {
-                User.findOne({'facebook.id': profile.id}, function (err, user) {
+                User.findOne({'facebook.id': profile._raw.id}, function (err, user) {
                       if(err)
                           return done(err);
-                      if(user)
+                      if(user){
+                          console.log('User object');
+                          console.log(user);
                           return done(null, user);
+                      }
                       else{
                           var newuser = new User();
-                          newuser.facebook.id = profile.id;
+                          newuser.facebook.id = profile._json.id;
                           newuser.facebook.token = accessToken;
-                          newuser.name = profile.name.givenName + " " + profile.name.familyName ;
-                          newuser.email = profile.emails[0].value;
+                          newuser.name = profile._json.first_name + " " + profile._json.last_name;
+                          newuser.email = profile._json.email;
+                          newuser.gender = profile._json.gender;
 
                           newuser.save(function (err) {
                              if(err)

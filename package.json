@@ -13,6 +13,7 @@
     "express": "~4.15.2",
     "handlebars": "^4.0.10",
     "hbs": "^4.0.1",
+    "jade": "^1.11.0",
     "minimist": "*",
     "mongoose": "^4.11.3",
     "morgan": "~1.8.1",

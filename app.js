@@ -16,7 +16,7 @@ var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
+app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -34,7 +34,9 @@ app.use('/products',products);
 app.use('/sell',sell);
 
 passport.serializeUser(function(user, done) {
+    console.log(user);
     done(null, user);
+
 });
 
 passport.deserializeUser(function(user, done) {
