@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#ff4c94">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#ff4c94">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#ff4c94">
+
+    <link rel="icon" href="../../favicon.ico">
+
+
+    <link rel='stylesheet' href='/css/main.min.css' />
+    {{!-- <link rel="stylesheet" href="https://use.fontawesome.com/444e49f463.css"> --}}
+
+    <!--This sets the baseUrl to the "scripts" directory, and
+    loads a script that will have a module ID of 'main'-->
+    <!--For production -->
+    <script src="/javascripts/require.js" data-main="/javascripts/js-built/common"></script>
+    <!--For Development
+        <script src="javascripts/require.js" data-main="javascripts/common"></script>
+    -->
+    <script src="https://use.fontawesome.com/444e49f463.js"></script>
+
+</head>
+<body>
+
+{{> header}}
+
+{{{body}}}
+
+{{> footer}}
+
+<!-- Placed at the end of the document so the pages load faster -->
+<script>
+
+</script>
+</body>
+</html>
+

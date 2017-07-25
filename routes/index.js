@@ -18,9 +18,8 @@ router.get('/auth/facebook/callback',
     passport.authenticate('facebook', { successRedirect: '/profile',
         failureRedirect: '/'}));
 
-router.get('/profile',isLoggedIn, function (req, res) {
-    console.log(req.session.passport.user);   //display mongodb id
-   res.redirect('/');
+router.get('/profile',function (req, res) {
+    res.redirect('/');
 });
 
 router.get('/logout', function(req, res){
