@@ -8,7 +8,7 @@ router.use(passport.initialize());
 router.use(passport.session());
 
 router.get('/', function(req, res, next) {
-  res.json('HOME PAGE !!!');
+    res.json('HOME PAGE !!!');
 });
 
 
@@ -19,7 +19,7 @@ router.get('/auth/facebook/callback',
         failureRedirect: '/'}));
 
 router.get('/profile',function (req, res) {
-   res.redirect('/');
+    res.redirect('/');
 });
 
 router.get('/logout', function(req, res){

@@ -12,7 +12,7 @@ var index = require('./routes/index');
 var books = require('./routes/books');
 var products = require('./routes/products');
 var sell = require('./routes/sell');
-
+var flash = require('express-flash');
 var app = express();
 
 //hbs helpers
@@ -29,6 +29,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //routing path specifications
