@@ -10,6 +10,7 @@ var index = require('./routes/index');
 var books = require('./routes/books');
 var products = require('./routes/products');
 var sell = require('./routes/sell');
+var session = require('express-session');
 
 var app = express();
 
@@ -26,6 +27,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(session({secret : 'Session'}));
+
 //routing path specifications
 require('./routes/index')(app, passport);
 require('./passport/passport')(passport);
@@ -33,17 +36,6 @@ app.use('/books',books);
 app.use('/products',products);
 app.use('/sell',sell);
 
-passport.serializeUser(function(user, done) {
-    //console.log(req.session.passport.user);
-
-    done(null, user.facebook.id);
-
-});
-
-passport.deserializeUser(function(user, done) {
-
-    done(null, user);
-});
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

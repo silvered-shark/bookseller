@@ -13,6 +13,10 @@ const userSchema = new Schema({
     facebook : {
         id: String,
         token: String
+    },
+    google : {
+        id : String,
+        token : String
     }
 });
 

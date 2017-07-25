@@ -11,6 +11,20 @@ const User = require('../models/user.js');
 
 module.exports = function (passport) {
 
+    passport.serializeUser(function(user, done) {
+
+        done(null, user.id);
+
+    });
+
+    passport.deserializeUser(function(id, done) {
+        User.findById( {_id : id}, function (err, user) {
+           done(err, user)
+
+        });
+    });
+
+
     passport.use(new FacebookStrategy({
             clientID: configAuth.facebookAuth.clientID,
             clientSecret: configAuth.facebookAuth.clientSecret,
@@ -18,6 +32,7 @@ module.exports = function (passport) {
             profileFields: ['id', 'email', 'gender', 'link',  'name', 'verified']
        },
         function(accessToken, refreshToken, profile, done) {
+            console.log(profile);
             process.nextTick(function () {
                 User.findOne({'facebook.id': profile.id}, function (err, user) {
                       if(err)
@@ -50,18 +65,31 @@ module.exports = function (passport) {
 
 
     passport.use(new GoogleStrategy({
-            consumerKey: configAuth.GmailAuth.clientID,
-            consumerSecret: configAuth.GmailAuth.clientSecret,
-            callbackURL: configAuth.GmailAuth.callbackURL
+            consumerKey : configAuth.GmailAuth.clientID,
+            consumerSecret : configAuth.GmailAuth.clientSecret,
+            callbackURL : configAuth.GmailAuth.callbackURL
         },
         function(token, tokenSecret, profile, done) {
             process.nextTick(function () {
-                User.findOne({googleId: profile.id}, function (err, user) {
+
+                User.findOne({'google.id': profile.id}, function (err, user) {
                     if(err)
                         return done(err);
                     if(user)
                         return done(null, user);
                     else{
+                          var newUser = new User();
+                          newUser.name = profile.displayName;
+                          newUser.google.token = token;
+                          newUser.email = profile.email[0].value;
+                          newUser.google.id = profile.id;
+
+                          newUser.save(function(err) {
+                              if (err)
+                                  return done(err);
+                              else
+                                  return done(null, newUser);
+                          });
 
                     }
                 });
