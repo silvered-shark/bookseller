@@ -12,6 +12,7 @@ var index = require('./routes/index');
 var books = require('./routes/books');
 var products = require('./routes/products');
 var sell = require('./routes/sell');
+var session = require('express-session');
 
 var app = express();
 
@@ -30,6 +31,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(session({secret : 'Session'}));
 
 //routing path specifications
 require('./routes/index')(app, passport);
