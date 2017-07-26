@@ -8,8 +8,8 @@ module.exports = {
         'callbackURL' : 'http://localhost:3000/auth/facebook/callback'
     },
     'GmailAuth' : {
-        'clientID' : '324831609027-ldh1koblk0q6u9dimjajd1i9u5iqhk3k.apps.googleusercontent.com',
-        'clientSecret' : 'dtu_hbvWv_yay2QUokPP3V05',
+        'clientID' : '699524736885-m55q0qp03lf781r9f4kb08iqm2jogaml.apps.googleusercontent.com',
+        'clientSecret' : 'uEAUSXce-YiBYZ_6yF8bX0cZ',
         'callbackURL' : 'http://localhost:3000/auth/google/callback'
 
     }
