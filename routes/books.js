@@ -17,9 +17,10 @@ const getAll = function (req, res, next) {
 
     Book.find({}, function (err, books) {
         if (err)
-            throw err;
+            res.send();
 
         res.json(books);
+        //res.status(200).render('./views/books',books);
         res.end();
         next();
 
@@ -227,12 +228,12 @@ router.route('/')
             if(err)
                 throw err;
 
-        })
+        });
         res.send("Created user");
 
         next();
 
-    })
+    });
     
     
 router.route('/')

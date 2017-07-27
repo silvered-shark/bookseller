@@ -8,7 +8,8 @@ router.use(passport.initialize());
 router.use(passport.session());
 
 router.get('/', function(req, res, next) {
-  res.send('HOME PAGE !!!');
+  var options = {title:"Bookseller"};
+    res.render('index',options);
 });
 
 
@@ -19,7 +20,7 @@ router.get('/auth/facebook/callback',
         failureRedirect: '/'}));
 
 router.get('/profile',function (req, res) {
-    res.redirect('/');
+
 });
 
 router.get('/logout', function(req, res){

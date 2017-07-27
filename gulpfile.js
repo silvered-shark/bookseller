@@ -25,6 +25,15 @@ var exec = require('child_process').exec;
 var color = require('gulp-color');
 var cleanDest = require('gulp-clean-dest');
 
+var hash = "";
+
+gulp.task('hash', function(){
+    // create a unique hash code
+    hash = crypto.createHash('sha1').update((new Date().getTime().toString())).digest('hex');
+    console.log('Hash code generated - ', hash);
+    return hash;
+});
+
 // prod task to compile and concat js files into a minified bundle
 gulp.task('js',function(cb){
 
@@ -113,10 +122,4 @@ gulp.task('hbs', ['hash', 'less','js'], function() {
 gulp.task('default', ['hbs'], function() {
 
 });
-var hash = "";
-gulp.task('hash', function(){
-    // create a unique hash code
-    hash = crypto.createHash('sha1').update((new Date().getTime().toString())).digest('hex');
-    console.log('Hash code generated - ', hash);
-    return hash;
-});
+
