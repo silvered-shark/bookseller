@@ -6669,7 +6669,7 @@ button.close {
 }
 .header .header-nightsky {
   color: white;
-  background-image: url("nightsky.jpg");
+  background: url("../../public/images/nightsky.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom;
