@@ -25,7 +25,7 @@ app.set('view engine', 'hbs');
 
 // uncomment after placing your favicon in /public
 //app.use(path.join(__dirname, 'public/images', 'nightsky.jpg'));
-app.use(express.static(path.join(__dirname, 'public/images','nightsky.jpg')));
+app.use(express.static(path.join(__dirname + '/public/images')));
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
