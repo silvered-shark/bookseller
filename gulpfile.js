@@ -49,6 +49,24 @@ gulp.task('js',function(cb){
 
 });
 
+// dev task to compile and concat js files into a bundle
+var devjs = gulp.task('devjs', function() {
+
+    console.log('Hash code in devjs - ', hash);
+
+    return browserify('./assets/js/main.js', {debug: true, global: false})
+        .bundle()
+        .on('error', function(err){
+            gutil.log(err);
+            this.emit('end');
+        })
+        .pipe(source('bundle.js'))
+        .pipe(gulp.dest('./public/js/'))
+        .pipe(browserSync.stream())
+        .pipe(notify('(DEV)JS modules Transcompiled, Concatenated and Minified'));
+
+});
+
 
 /* Task to minify css */
 gulp.task('less', function() {
@@ -79,6 +97,28 @@ gulp.task('less', function() {
 
 });
 
+/* dev task for compiling less and prefixing (no minification) */
+gulp.task('devless', function () {
+
+    console.log('Hash code in devless - ', hash);
+
+    return gulp.src(['./assets/less/main.less'])
+        .pipe(less({
+            compress: false,
+            globalVars: {
+                hash: 'dev'
+            }
+        }).on('error', function(err){
+            gutil.log(err);
+            this.emit('end');
+        }))
+        .pipe(autoprefixer({
+            browsers: ['last 2 versions', '> 1%', 'not ie < 8', 'ff >= 20', 'last 2 Chrome versions']
+        }))
+        .pipe(rename('main.css'))
+        .pipe(gulp.dest('./public/css/'))
+        .pipe(notify('(DEV)Less Compiled, Prefixed and Minified'));
+});
 
 /* dev task that watches the files for changes and performs respective tasks */
 gulp.task('watch', ["browser-sync"],function(){

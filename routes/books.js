@@ -19,10 +19,10 @@ const getAll = function (req, res, next) {
         if (err)
             res.send();
 
-        res.json(books);
-        //res.status(200).render('./views/books',books);
+        res.render('books',books);
+
         res.end();
-        next();
+        //next();
 
     });
 

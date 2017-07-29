@@ -3,7 +3,6 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var hbs = require('hbs');
-var hbsHelpers = require('./helpers/hbsHelpers');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var winston = require('winston');
@@ -15,13 +14,15 @@ var sell = require('./routes/sell');
 var session = require('express-session');
 
 var app = express();
+var hbsHelpers = require('./helpers/hbsHelpers');
 
-//hbs helpers
-hbs.registerPartials(__dirname + '/views/partials');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+
+//hbs helpers
+hbs.registerPartials(__dirname + '/views/partials');
 
 // uncomment after placing your favicon in /public
 //app.use(path.join(__dirname, 'public/images', 'nightsky.jpg'));
