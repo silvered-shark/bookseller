@@ -14,13 +14,11 @@ require.config({
             exports: '$'
         },
         "bootstrap" : { "deps" :['jQuery'] },
-        jqBootstrapValidation : { "deps" :['jQuery'] },
-        "fblogin":{"deps":['jquery']},
-        "like":{"deps":['jquery']},
+        jqBootstrapValidation : { "deps" :['jQuery'] }
     }
 });
 
-require(['jQuery','bootstrap','indexPage','contactPage','jqBootstrapValidation','fblogin','like'], function($,logout) {
+require(['jQuery','bootstrap','jqBootstrapValidation'], function($,logout) {
     "use strict";
     logout.init();
     // console.log('App loaded with jQuery & bootstrap');

@@ -6902,6 +6902,47 @@ body {
   /* Change the width of the three columns to 100%
       (to stack horizontally on small screens) */
 }
+.content header.carousel {
+  height: 50%;
+}
+.content header.carousel .item,
+.content header.carousel .item.active,
+.content header.carousel .carousel-inner {
+  height: 100%;
+}
+.content header.carousel .fill {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+}
+@media (min-width: 767px) {
+  .content .carousel-indicators {
+    bottom: 10px;
+  }
+}
+.content .fill {
+  background-attachment: fixed;
+  background-position: 50% 50%;
+}
+@media screen and (min-width: 768px) {
+  .content .carousel-caption {
+    left: 0%;
+    right: 0%;
+    bottom: 0;
+    padding-bottom: 40px;
+    padding-top: 0;
+    background: rgba(0, 0, 0, 0.4);
+  }
+}
+.content #myCarousel {
+  height: 50vh;
+}
+@media screen and (min-width: 768px) {
+  .content #myCarousel {
+    min-height: 400px;
+  }
+}
 .content * {
   -moz-box-sizing: border-box;
        box-sizing: border-box;

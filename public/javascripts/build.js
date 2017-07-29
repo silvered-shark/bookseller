@@ -11,6 +11,10 @@ var requirejs = require('requirejs'),
         modules: [
             {
                 name: 'common'
+            },
+            {
+                name: 'index',
+                exclude: ['common']
             }
 
         ]

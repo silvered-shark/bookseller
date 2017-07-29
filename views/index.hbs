@@ -1,9 +1,48 @@
 <div class="content">
+    <header id="myCarousel" class="carousel slide">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <div class="fill" style="background-image:url('https://s3-ap-southeast-1.amazonaws.com/myeyestarimg/790035D9_1490528392593_23c2cd02-1fae-4507-9d4b-9385b6331f3c.jpeg');"></div>
+                <div class="carousel-caption">
+                    <h2>1,00,000+ parents using GoParento</h2>
+                </div>
+            </div>
+            <div class="item">
+                <div class="fill" style="background-image:url('https://s3-ap-southeast-1.amazonaws.com/myeyestarimg/6F0CEFCD_1490522721162_caf712a7-c11c-4f35-b072-f7d6304de9bd.jpeg');"></div>
+                <div class="carousel-caption">
+                    <h2>Easy guidance & tips for parents</h2>
+                </div>
+            </div>
+            <div class="item">
+                <div class="fill" style="background-image:url('https://s3-ap-southeast-1.amazonaws.com/myeyestarimg/114C98C9_1490526665286_5df8ecc5-f254-45e3-b66a-878fe9e37aaf.jpeg');"></div>
+                <div class="carousel-caption">
+                    <h2>Entertainment for kids </h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="icon-prev"></span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="icon-next"></span>
+        </a>
+    </header>
 
     <center >
         <h2 >Hover over the pic to see animation</h2>
     </center>
     <h1></h1>
+
     <div class="container">
         <div class="main">
 
@@ -47,4 +86,12 @@
         </div>
     </div>
 </div>
-
+<script>
+    require(['common'], function (common) {
+        // load application code for page
+        require(['index'], function(index) {
+            index.init();
+            index.secondInit();
+        });
+    });
+</script>
