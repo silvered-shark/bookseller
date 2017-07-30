@@ -8,7 +8,9 @@ define(['index', 'jQuery'], function (index, $) {
         $('.carousel').carousel({
             interval: 3000 //changes the speed
         });
-    console.log("INdex page js run...");
+
+        $('#section-1').addClass('animated-delay:1s');
+        $('#section-2').addClass('animated-delay:5s');
     };
     var secondInit = function(){
     };

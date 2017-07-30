@@ -15,6 +15,10 @@ var requirejs = require('requirejs'),
             {
                 name: 'index',
                 exclude: ['common']
+            },
+            {
+                name: 'header',
+                exclude: ['common']
             }
 
         ]

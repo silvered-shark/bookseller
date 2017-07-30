@@ -1,56 +1,46 @@
 <div class="header">
-    <div class="header-nightsky">
-        <nav class="navbar navbar-default ">
-                <div class="container">
-                    <a class="navbar-brand" href="#">LOGO</a>
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                    </div>
-                    <div class="collapse navbar-collapse" id="myNavbar">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a href="#">HOME</a></li>
-                            <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">NEWS <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Page 1-1</a></li>
-                                    <li><a href="#">Page 1-2</a></li>
-                                    <li><a href="#">Page 1-3</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">FEATURES <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Page 1-1</a></li>
-                                    <li><a href="#">Page 1-2</a></li>
-                                    <li><a href="#">Page 1-3</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">DEMOS<span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Page 1-1</a></li>
-                                    <li><a href="#">Page 1-2</a></li>
-                                    <li><a href="#">Page 1-3</a></li>
-                                </ul>
-                            </li>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">BookSeller</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/">Home</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Activities
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-submenu">
+                            <a class="test" tabindex="-1" href="#">SELL <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a tabindex="-1" href="#">BOOKS</a></li>
+                                <li><a tabindex="-1" href="#">TOOLS</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <a class="test" tabindex="+1" href="#">BUY <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a tabindex="-1" href="#">BOOKS</a></li>
+                                <li><a tabindex="-1" href="#">TOOLS</a></li>
+                            </ul>
+                        </li>
+                    </ul>
 
+                </li>
 
-                        </ul>
-                    </div>
-                </div>
-        </nav>
-
-        <div class="hero">
-            <h1></h1>
-
-            <p>Explore the world from every dimension.</p>
-            <p>Notice the fantacy it hides from you<p>
-            <div class="btn btn-primary">Our Visits</div>
-            <div class="btn btn-primary">Contact us</div>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/auth/facebook">facebook-login <i class="icon-facebook-login"></i> </a></li>
+            </ul>
         </div>
-    </div>
+    </nav>
 </div>
+<script>
+    require(['common'], function (common) {
+        // load application code for page
+        require(['header'], function(header) {
+            header.init();
+            header.secondInit();
+        });
+    });
+</script>

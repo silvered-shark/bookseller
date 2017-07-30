@@ -1,1 +1,1 @@
-define("index",["index","jQuery"],function(n,e){var i=function(){e(".carousel").carousel({interval:3e3}),console.log("INdex page js run...")},o=function(){};return{init:i,secondInit:o}});
+define("index",["index","jQuery"],function(n,e){var a=function(){e(".carousel").carousel({interval:3e3}),e("#section-1").addClass("animated-delay:1s"),e("#section-2").addClass("animated-delay:5s")},i=function(){};return{init:a,secondInit:i}});
