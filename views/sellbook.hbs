@@ -1,0 +1,75 @@
+<form id="bookform" class="form-horizontal">
+    <fieldset>
+
+        <!-- Form Name -->
+        <legend class="text-center"><h2><b>Sell on BookSeller</b></h2></legend>
+
+        <!-- Select Basic -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="selectbasic">Book Name: </label>
+            <div class="col-md-6">
+                <select id="selectbook" name="bookselect" class="form-control">
+                    <option value="DevrajSingh(Volume One)">Devraj Singh(Volume One)</option>
+                    <option value="DevrajSingh(Volume Two)">Devraj Singh(Volume Two)</option>
+                    <option value="EngineeringMathematics(V.P.Mishra)">Engineering Mathematics (V.P.Mishra)</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Multiple Radios -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="radios">Stream: </label>
+            <div class="col-md-4">
+                <div class="radio">
+                    <label for="radios-0">
+                        <input type="radio" name="stream" id="radios-0" value="CSE" checked="checked">
+                        CSE
+                    </label>
+                </div>
+                <div class="radio">
+                    <label for="radios-1">
+                        <input type="radio" name="stream" id="radios-1" value="ECE">
+                        ECE
+                    </label>
+                </div>
+                <div class="radio">
+                    <label for="radios-2">
+                        <input type="radio" name="stream" id="radios-2" value="CSE&ECE">
+                        CSE &amp; ECE (both)
+                    </label>
+                </div>
+                <div class="radio">
+                    <label for="radios-3">
+                        <input type="radio" name="stream" id="radios-3" value="Other">
+                        Other
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="textinput">Expected Price: </label>
+            <div class="col-md-4">
+                <input id="textprice" name="textinput" type="text" placeholder="Price in Multiples of Rs.10" class="form-control input-md" required="">
+
+            </div>
+        </div>
+        <!-- Button -->
+        <div class="form-group">
+            <div class="col-lg-offset-4 col-md-3">
+                <button id='sub' name="singlebutton" class="btn btn-primary" type="submit">Submit</button>
+            </div>
+        </div>
+    </fieldset>
+</form>
+<!-- For success/fail messages -->
+<div id="success"></div>
+<script>
+    require(['common'], function (common) {
+        // load application code for page
+        require(['sellbook'], function(sellbook) {
+            sellbook.init();
+        });
+    });
+</script>

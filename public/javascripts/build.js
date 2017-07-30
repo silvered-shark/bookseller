@@ -19,6 +19,10 @@ var requirejs = require('requirejs'),
             {
                 name: 'header',
                 exclude: ['common']
+            },
+            {
+                name:'sellbook',
+                exclude:['common']
             }
 
         ]

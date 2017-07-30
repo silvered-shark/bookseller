@@ -58,6 +58,6 @@ function isLoggedIn(req, res, next) {
         return next();
     }
     // flash messages
-    res.send('Not user');
+    res.redirect('/');
 
 }
