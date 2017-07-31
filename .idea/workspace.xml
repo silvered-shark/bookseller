@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="fcdfaf86-f3f4-46e3-8e6a-2d604ec08556" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/js-built/sellbook.js" afterPath="$PROJECT_DIR$/public/javascripts/js-built/sellbook.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/sellbook.js" afterPath="$PROJECT_DIR$/public/javascripts/sellbook.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/books.js" afterPath="$PROJECT_DIR$/routes/books.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/layout.hbs" afterPath="$PROJECT_DIR$/views/layout.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/sellbook.hbs" afterPath="$PROJECT_DIR$/views/sellbook.hbs" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -25,7 +20,7 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="passport.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="passport.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/passport/passport.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="300">
@@ -101,7 +96,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sellbook.hbs" pinned="false" current-in-tab="true">
+      <file leaf-file-name="sellbook.hbs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/sellbook.hbs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="37">
@@ -372,12 +367,12 @@
       <workItem from="1500619311939" duration="9957000" />
       <workItem from="1500637283917" duration="10678000" />
       <workItem from="1500905531087" duration="9901000" />
-      <workItem from="1501484415275" duration="4567000" />
+      <workItem from="1501484415275" duration="4786000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41400000" />
+    <option name="totallyTimeSpent" value="41619000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="69" y="24" width="1297" height="744" extended-state="6" />
@@ -760,16 +755,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/passport/passport.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="52" column="44" lean-forward="false" selection-start-line="52" selection-start-column="40" selection-end-line="52" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#40#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/layout.hbs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -783,16 +768,6 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascripts/sellbook.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
-          <folding>
-            <marker date="1501488898101" expanded="true" signature="1426:1433" ph="×" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -825,6 +800,26 @@
         <state relative-caret-position="37">
           <caret line="69" column="8" lean-forward="false" selection-start-line="69" selection-start-column="8" selection-end-line="69" selection-end-column="8" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/sellbook.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+          <folding>
+            <marker date="1501488898101" expanded="true" signature="1426:1433" ph="×" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/passport/passport.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="52" column="44" lean-forward="false" selection-start-line="52" selection-start-column="40" selection-end-line="52" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#40#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
