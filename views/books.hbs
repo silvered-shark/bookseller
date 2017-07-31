@@ -1,32 +1,15 @@
 
 
-<main>
+
     <!--Main layout-->
     <div class="container">
 
-        <div class="row">
-            {{#each this}}
-            <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                    <img src="" alt="Img">
-                    <div class="caption">
-                        <h3>{{this.name}}</h3>
-                        <p></p>
-                        <p>
-                            <a href="" class="btn btn-primary" role="button">Button</a>
-                            <a href="" class="btn btn-default pull-right" role="button">Button</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            {{/each}}
-
-        </div>
+           <div class="row">
+               {{> repeater this}}
+           </div>
 
     </div>
     <!--/.Main layout-->
-</main>
-
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.0/js/mdb.min.js">
 </script>
@@ -34,7 +17,7 @@
     //load common code
     require(['common','books'], function (common, books) {
         // load application code for page
-        rhymes.init();
+        books.init();
     });
 </script>
 
