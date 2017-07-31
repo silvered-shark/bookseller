@@ -19,10 +19,8 @@ const getAll = function (req, res, next) {
         if (err)
             res.send();
 
-        res.render('books',books);
-
-        res.end();
-        //next();
+         //  res.json(books);
+        res.render('books', books);
 
     });
 
@@ -53,8 +51,16 @@ const addOne = function (req, res, next) {
 
         if(err)
             throw err;
+<<<<<<< HEAD
     });
     res.redirect('/');
+=======
+
+        res.send("Created user");
+
+    })
+
+>>>>>>> card
 }
 
 
@@ -199,6 +205,11 @@ const deleteByBook = function (req, res, next) {
 
 }
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> card
     
 router.route('/')
     .get(getAll)

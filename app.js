@@ -14,7 +14,7 @@ var sell = require('./routes/sell');
 var session = require('express-session');
 
 var app = express();
-var hbsHelpers = require('./helpers/hbsHelpers');
+var hbsHelpers = require('./helpers/hbsHelpers')(hbs);
 
 
 // view engine setup

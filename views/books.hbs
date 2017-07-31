@@ -1,15 +1,23 @@
-<div class="books-page">
-    <section class="bg-white light-min-box-shadow vv col-xs-12 col-md-2 col-md-offset-3">
-        <hr class="mar-16">
-           <p>{{data.id}}
 
-           </p>
-    </section>
-</div>
+
+
+    <!--Main layout-->
+    <div class="container">
+
+           <div class="row">
+               {{> repeater this}}
+           </div>
+
+    </div>
+    <!--/.Main layout-->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.0/js/mdb.min.js">
+</script>
 <script>
     //load common code
     require(['common','books'], function (common, books) {
         // load application code for page
-        rhymes.init();
+        books.init();
     });
 </script>
+

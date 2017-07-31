@@ -1,0 +1,15 @@
+<div class="">
+
+    {{#ifCond this.type 'cse'}}
+       {{> bookCard this}}
+    {{/ifCond}}
+    {{#ifCond this.type 'ECE'}}
+        {{> bookCard this}}
+    {{/ifCond}}
+    {{#ifCond this.type 'CSE&ECE'}}
+        {{> bookCard this}}
+    {{/ifCond}}
+    {{#ifCond this.type 'Other'}}
+        {{> bookCard this}}
+    {{/ifCond}}
+</div>
