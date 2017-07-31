@@ -19,10 +19,8 @@ const getAll = function (req, res, next) {
         if (err)
             res.send();
 
-        res.render('books',books);
-
-        res.end();
-        //next();
+         //  res.json(books);
+        res.render('books', books);
 
     });
 
@@ -43,28 +41,20 @@ const getByName = function (req, res, next) {
 
 const addOne = function (req, res, next) {
 
-    var Book = new Book();
+    var newBook = new Book();
 
-    res.json({"recieve" :req.body.name});
-    var Book = new Book();
+    newBook.name = req.body.name;
+    newBook.expectedRate = req.body.expectedRate;
+    newBook.type = req.body.type;
 
-
-
-    Book.name = req.body.name;
-    Book.expectedRate = req.body.expectedRate;
-    Book.type = req.body.type;
-
-    Book.save(function(err) {
+    newBook.save(function(err) {
 
         if(err)
             throw err;
+
         res.send("Created user");
 
-
     })
-
-    res.end();
-
 
 }
 
@@ -210,31 +200,8 @@ const deleteByBook = function (req, res, next) {
 
 }
 
-router.route('/')
-    .get(getAll)
-    .post(function (req, res, next) {
 
 
-
-        var addBook = new Book();
-
-
-        addBook.name = req.body.name;
-        addBook.expectedRate = req.body.expectedRate;
-        addBook.type = req.body.type;
-
-        addBook.save(function(err) {
-
-            if(err)
-                throw err;
-
-        });
-        res.send("Created user");
-
-        next();
-
-    });
-    
     
 router.route('/')
     .get(getAll)

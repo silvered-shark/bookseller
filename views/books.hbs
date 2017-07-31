@@ -1,11 +1,35 @@
-<div class="books-page">
-    <section class="bg-white light-min-box-shadow vv col-xs-12 col-md-2 col-md-offset-3">
-        <hr class="mar-16">
-           <p>{{data.id}}
 
-           </p>
-    </section>
-</div>
+
+<main>
+    <!--Main layout-->
+    <div class="container">
+
+        <div class="row">
+            {{#each this}}
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <img src="" alt="Img">
+                    <div class="caption">
+                        <h3>{{this.name}}</h3>
+                        <p></p>
+                        <p>
+                            <a href="" class="btn btn-primary" role="button">Button</a>
+                            <a href="" class="btn btn-default pull-right" role="button">Button</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+
+        </div>
+
+    </div>
+    <!--/.Main layout-->
+</main>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.0/js/mdb.min.js">
+</script>
 <script>
     //load common code
     require(['common','books'], function (common, books) {
@@ -13,3 +37,4 @@
         rhymes.init();
     });
 </script>
+
