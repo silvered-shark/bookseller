@@ -55,10 +55,11 @@ define(['sellbook', 'jQuery','jqBootstrapValidation'], function (sellbook, $,jqB
         var price = $('#textprice').val();
 
         var bookJson = {
-            "bn": bookname,
-            "st": stream,
-            "pr": price
+            "name": "phucgud",
+            "type": "cse",
+            "expectedRate": 78
         };
+
 
         $.ajax({
             url: "/books",
