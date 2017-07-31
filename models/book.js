@@ -6,6 +6,7 @@ var con_book = mongoose.createConnection("localhost:27017/bookseller");
 const sellingInfoSchema = new Schema({
 
     postedDate : { type : Date, default : Date.now() },
+    expPrice: Number,
     seller : { type : Schema.Types.ObjectId, ref : "user"}
 
 });
@@ -15,7 +16,7 @@ const sellingInfoSchema = new Schema({
 const bookSchema = new Schema({
 
     name : { type : String},
-    expectedRate : Number,
+    description: String,
     type : String,
     sellingInfo : [sellingInfoSchema]
 

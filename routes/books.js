@@ -44,23 +44,19 @@ const addOne = function (req, res, next) {
     var newBook = new Book();
 
     newBook.name = req.body.name;
-    newBook.expectedRate = req.body.expectedRate;
+    newBook.description = req.body.description;
     newBook.type = req.body.type;
-
+      console.log(newBook);
     newBook.save(function(err) {
 
         if(err)
             throw err;
-<<<<<<< HEAD
     });
     res.redirect('/');
-=======
 
-        res.send("Created user");
 
-    })
 
->>>>>>> card
+
 }
 
 
@@ -205,12 +201,6 @@ const deleteByBook = function (req, res, next) {
 
 }
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> card
-    
 router.route('/')
     .get(getAll)
     .post(addOne);

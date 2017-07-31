@@ -2,67 +2,65 @@
     <fieldset>
 
         <!-- Form Name -->
-        <legend class="text-center"><h2><b>Sell on BookSeller</b></h2></legend>
+        <legend>Book Adder</legend>
 
-        <!-- Select Basic -->
+        <!-- Text input-->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="selectbasic">Book Name: </label>
-            <div class="col-md-6">
-                <select id="selectbook" name="bookselect" class="form-control">
-                    <option value="DevrajSingh(Volume One)">Devraj Singh(Volume One)</option>
-                    <option value="DevrajSingh(Volume Two)">Devraj Singh(Volume Two)</option>
-                    <option value="EngineeringMathematics(V.P.Mishra)">Engineering Mathematics (V.P.Mishra)</option>
-                </select>
+            <label class="col-md-4 control-label" for="Book Name">Book Name</label>
+            <div class="col-md-4">
+                <input id="BookName" name="Book Name" type="text" placeholder="Book Name" class="form-control input-md" required="">
+
             </div>
         </div>
 
         <!-- Multiple Radios -->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="radios">Stream: </label>
+            <label class="col-md-4 control-label" for="radios">Stream</label>
             <div class="col-md-4">
                 <div class="radio">
                     <label for="radios-0">
-                        <input type="radio" name="stream" id="radios-0" value="CSE" checked="checked">
+                        <input type="radio" name="radios" id="radios-0" value="1" checked="checked">
                         CSE
                     </label>
                 </div>
                 <div class="radio">
                     <label for="radios-1">
-                        <input type="radio" name="stream" id="radios-1" value="ECE">
+                        <input type="radio" name="radios" id="radios-1" value="2">
                         ECE
                     </label>
                 </div>
                 <div class="radio">
                     <label for="radios-2">
-                        <input type="radio" name="stream" id="radios-2" value="CSE&ECE">
-                        CSE &amp; ECE (both)
+                        <input type="radio" name="radios" id="radios-2" value="3">
+                        CSE&amp;ECE
                     </label>
                 </div>
                 <div class="radio">
                     <label for="radios-3">
-                        <input type="radio" name="stream" id="radios-3" value="Other">
-                        Other
+                        <input type="radio" name="radios" id="radios-3" value="4">
+                        Others
                     </label>
                 </div>
             </div>
         </div>
 
-        <!-- Text input-->
+        <!-- Textarea -->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="textinput">Expected Price: </label>
+            <label class="col-md-4 control-label" for="textarea">Description</label>
             <div class="col-md-4">
-                <input id="textprice" name="textinput" type="text" placeholder="Price in Multiples of Rs.10" class="form-control input-md" required="">
-
+                <textarea class="form-control" id="textdesc" name="textarea">Description</textarea>
             </div>
         </div>
         <!-- Button -->
         <div class="form-group">
-            <div class="col-lg-offset-4 col-md-3">
-                <button id='sub' name="singlebutton" class="btn btn-primary" type="submit" >Submit</button>
+            <label class="col-md-4 control-label" for="singlebutton">Single Button</label>
+            <div class="col-md-4">
+                <button id="singlebutton" name="singlebutton" class="btn btn-primary" type="submit">Button</button>
             </div>
         </div>
     </fieldset>
 </form>
+
 
 <div  id="success">
 
@@ -72,9 +70,9 @@
     function performPostRequest(e) {
 
         axios.post('http://localhost:3000/books', {
-            name : document.getElementById('selectbook').value,
-            expectedRate : document.getElementsByName('stream').value,
-            type : document.getElementById('textprice').value
+            name : document.getElementById('BookName').value,
+            type : document.getElementsByName('radios').value,
+            description : document.getElementById('textdesc').value
         })
                 .then(function (response) {
                     document.getElementById("success").innerHTML= '<div class="alert alert-success"><b>Success !!!</b></div>';
