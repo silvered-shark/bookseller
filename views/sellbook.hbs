@@ -77,11 +77,11 @@
             type : document.getElementById('textprice').value
         })
                 .then(function (response) {
-                    document.getElementById("success").innerHTML('<div class="alert alert-success">Success </div>');
+                    document.getElementById("success").innerHTML= '<div class="alert alert-success"><b>Success !!!</b></div>';
 
                 })
                 .catch(function (error) {
-                    document.getElementById("success").innerHTML('<div class="alert alert-success">Success </div>');
+                    document.getElementById("success").innerHTML = '<div class="alert alert-danger">Failure !!! </div>';
 
                 });
 
