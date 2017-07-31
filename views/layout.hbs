@@ -16,9 +16,14 @@
     <!-- iOS Safari -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="#ff4c94">
-
+    <title>{{title}}</title>
     <link rel="icon" href="../../favicon.ico">
 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css" >
+
+    <link href="https://file.myfontastic.com/jYrx4AxBFXV3KwW9pUNtHc/icons.css" rel="stylesheet">
 
     <link rel='stylesheet' href='/css/main.min.css' />
     {{!-- <link rel="stylesheet" href="https://use.fontawesome.com/444e49f463.css"> --}}
@@ -30,18 +35,16 @@
     -->
     <!--For Development -->
         <script src="javascripts/require.js" data-main="javascripts/common"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
     <script src="https://use.fontawesome.com/444e49f463.js"></script>
-
 </head>
 <body>
-
 {{> header}}
 
 {{{body}}}
 
 {{> footer}}
-
 <!-- Placed at the end of the document so the pages load faster -->
 <script>
 

@@ -25,6 +25,15 @@ var exec = require('child_process').exec;
 var color = require('gulp-color');
 var cleanDest = require('gulp-clean-dest');
 
+var hash = "";
+
+gulp.task('hash', function(){
+    // create a unique hash code
+    hash = crypto.createHash('sha1').update((new Date().getTime().toString())).digest('hex');
+    console.log('Hash code generated - ', hash);
+    return hash;
+});
+
 // prod task to compile and concat js files into a minified bundle
 gulp.task('js',function(cb){
 
@@ -37,6 +46,24 @@ gulp.task('js',function(cb){
         console.log(' ');
         // cb();
     });
+
+});
+
+// dev task to compile and concat js files into a bundle
+var devjs = gulp.task('devjs', function() {
+
+    console.log('Hash code in devjs - ', hash);
+
+    return browserify('./assets/js/main.js', {debug: true, global: false})
+        .bundle()
+        .on('error', function(err){
+            gutil.log(err);
+            this.emit('end');
+        })
+        .pipe(source('bundle.js'))
+        .pipe(gulp.dest('./public/js/'))
+        .pipe(browserSync.stream())
+        .pipe(notify('(DEV)JS modules Transcompiled, Concatenated and Minified'));
 
 });
 
@@ -70,6 +97,28 @@ gulp.task('less', function() {
 
 });
 
+/* dev task for compiling less and prefixing (no minification) */
+gulp.task('devless', function () {
+
+    console.log('Hash code in devless - ', hash);
+
+    return gulp.src(['./assets/less/main.less'])
+        .pipe(less({
+            compress: false,
+            globalVars: {
+                hash: 'dev'
+            }
+        }).on('error', function(err){
+            gutil.log(err);
+            this.emit('end');
+        }))
+        .pipe(autoprefixer({
+            browsers: ['last 2 versions', '> 1%', 'not ie < 8', 'ff >= 20', 'last 2 Chrome versions']
+        }))
+        .pipe(rename('main.css'))
+        .pipe(gulp.dest('./public/css/'))
+        .pipe(notify('(DEV)Less Compiled, Prefixed and Minified'));
+});
 
 /* dev task that watches the files for changes and performs respective tasks */
 gulp.task('watch', ["browser-sync"],function(){
@@ -113,10 +162,4 @@ gulp.task('hbs', ['hash', 'less','js'], function() {
 gulp.task('default', ['hbs'], function() {
 
 });
-var hash = "";
-gulp.task('hash', function(){
-    // create a unique hash code
-    hash = crypto.createHash('sha1').update((new Date().getTime().toString())).digest('hex');
-    console.log('Hash code generated - ', hash);
-    return hash;
-});
+

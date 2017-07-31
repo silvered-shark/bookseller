@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "devstart": "node ./bin/www",
+    "start": "nodemon -e js,html,hbs ./bin/www"
   },
   "dependencies": {
     "body-parser": "^1.9.3",
@@ -12,6 +13,7 @@
     "debug": "~2.6.3",
     "express": "~4.15.2",
     "express-device": "^0.4.2",
+    "express-handlebars": "^3.0.0",
     "express-session": "^1.15.4",
     "handlebars": "^4.0.10",
     "hbs": "^4.0.1",

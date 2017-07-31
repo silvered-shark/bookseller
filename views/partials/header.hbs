@@ -1,0 +1,46 @@
+<div class="header">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">BookSeller</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/">Home</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Activities
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-submenu">
+                            <a class="test" tabindex="-1" href="#">SELL <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a tabindex="-1" href="/sell/books">BOOKS</a></li>
+                                <li><a tabindex="-1" href="/sell/products">TOOLS</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <a class="test" tabindex="+1" href="#">BUY <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a tabindex="-1" href="#">BOOKS</a></li>
+                                <li><a tabindex="-1" href="#">TOOLS</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                </li>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/auth/facebook">facebook-login <i class="icon-facebook-login"></i> </a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<script>
+    require(['common'], function (common) {
+        // load application code for page
+        require(['header'], function(header) {
+            header.init();
+            header.secondInit();
+        });
+    });
+</script>
