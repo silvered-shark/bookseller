@@ -19,7 +19,7 @@ const getBooksByOptions = function (req, res, next) {
      var option = req.query.type ? { type :  req.query.type } : {};
      var count =  req.query.count || bookcount;
 
-     Book.paginate( option, { offset : count-5 , limit : 6}, function (err, books) {
+     Book.paginate( option, { offset : count-6 , limit : 6}, function (err, books) {
         if (err)
             throw err;
 

@@ -77,7 +77,7 @@
         })
                 .then(function (response) {
                     document.getElementById("success").innerHTML= '<div class="alert alert-success"><b>Success !!!</b></div>';
-
+                    console.log(response);
                 })
                 .catch(function (error) {
                     document.getElementById("success").innerHTML = '<div class="alert alert-danger">Failure !!! </div>';

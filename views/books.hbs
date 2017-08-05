@@ -1,36 +1,44 @@
-<ul class="nav nav-pills">
-    <li class="active"><a href="?type=CSE">CSE</a></li>
-    <li><a href="?type=ECE"  >ECE</a></li>
-    <li><a href="?type=ECE" >CSE & ECE</a></li>
-</ul>
 
 
 <!--Main layout-->
-    <div class="container">
+    <div class="container" id="content">
+        <ul class="nav nav-pills">
+            <li class="active"><a href="?type=CSE" onclick="getBooks(e)">CSE</a></li>
+            <li><a href="?type=ECE"  onclick="getBooks(e)">ECE</a></li>
+            <li><a href="?type=CSE&ECE" onclick="getBooks(e)">CSE & ECE</a></li>
+        </ul>
 
            <div class="row" id="row">
                {{> repeater this}}
+
            </div>
+           <div class="row">
+               <a id="loadmore" class="btn btn-block btn-primary" role="button" >Load More</a>
+
+           </div>
+
 
     </div>
 
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.0/js/mdb.min.js">
-</script>
 <script>
+var count = 6 ;
+    document.getElementById('loadmore').addEventListener('click', performGetRequest);
+    function performGetRequest(e) {
 
-    function getBooks(e) {
-
-        var type = getElementById('');
-        axios.get('http://localhost:3000/books?'+type+'&')
-                .then(function (response) {
-
+          count += 6 ;
+         //document.getElementById('loadmore').href = "?count="+count;
+        fetch('?count='+count)
+                .then(function(response) {
+                   console.log(response);
+                  document.getElementById('row').appendTo(response);
+                 //   count=count+6;
                 })
                 .catch(function (error) {
-
+                   console.log(error);
                 });
-
         e.preventDefault();
+
     }
+
 </script>
 
