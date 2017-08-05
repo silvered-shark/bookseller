@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 var con_book = mongoose.createConnection("localhost:27017/bookseller");
+var mongoosePaginate = require('mongoose-paginate');
 
 
 const sellingInfoSchema = new Schema({
@@ -22,6 +23,7 @@ const bookSchema = new Schema({
 
 });
 
+bookSchema.plugin(mongoosePaginate);
 
 
 

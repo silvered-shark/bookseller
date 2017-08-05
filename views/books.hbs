@@ -1,10 +1,14 @@
+<ul class="nav nav-pills">
+    <li class="active"><a href="?type=CSE">CSE</a></li>
+    <li><a href="?type=ECE"  >ECE</a></li>
+    <li><a href="?type=ECE" >CSE & ECE</a></li>
+</ul>
 
 
-
-    <!--Main layout-->
+<!--Main layout-->
     <div class="container">
 
-           <div class="row">
+           <div class="row" id="row">
                {{> repeater this}}
            </div>
 
@@ -14,10 +18,19 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.0/js/mdb.min.js">
 </script>
 <script>
-    //load common code
-    require(['common','books'], function (common, books) {
-        // load application code for page
-        books.init();
-    });
+
+    function getBooks(e) {
+
+        var type = getElementById('');
+        axios.get('http://localhost:3000/books?'+type+'&')
+                .then(function (response) {
+
+                })
+                .catch(function (error) {
+
+                });
+
+        e.preventDefault();
+    }
 </script>
 

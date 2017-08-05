@@ -12,19 +12,22 @@ var User = require('../models/user');
 
 //TODO: add winston logging for every database operation
 
+const getBooksByOptions = function (req, res, next) {
 
-const getAll = function (req, res, next) {
 
-    Book.find({}, function (err, books) {
+     const bookcount = 6;
+     var option = req.query.type ? { type :  req.query.type } : {};
+     var count =  req.query.count || bookcount;
+
+     Book.paginate( option, { offset : count-5 , limit : 6}, function (err, books) {
         if (err)
-            res.send();
+            throw err;
 
-         //  res.json(books);
-        res.render('books', books);
+        res.render('books', books.docs);
 
-    });
+     });
 
-};
+}
 
 
 const getByName = function (req, res, next) {
@@ -202,7 +205,7 @@ const deleteByBook = function (req, res, next) {
 }
 
 router.route('/')
-    .get(getAll)
+    .get(getBooksByOptions)
     .post(addOne);
 
 router.route('/{bookname}')
