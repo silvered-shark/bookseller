@@ -54,9 +54,6 @@ const addOne = function (req, res, next) {
     });
     res.redirect('/');
 
-
-
-
 }
 
 
