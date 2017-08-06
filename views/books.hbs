@@ -21,21 +21,28 @@
     </div>
 
 <script>
-var count = 6 ;
+
+    var count = 6 ;
+    var row = getElementById('row');
     document.getElementById('loadmore').addEventListener('click', performGetRequest);
     function performGetRequest(e) {
 
           count += 6 ;
-         //document.getElementById('loadmore').href = "?count="+count;
-        fetch('?count='+count)
+          document.getElementById('loadmore').href = "?count="+count;
+
+          fetch('http://localhost:3000/books?count='+count)
                 .then(function(response) {
-                   console.log(response);
-                  document.getElementById('row').appendTo(response);
-                 //   count=count+6;
+                   return response.json();
                 })
+                  .then(function(data) {
+                      row.append(data.docs);
+                  })
                 .catch(function (error) {
                    console.log(error);
                 });
+
+
+
         e.preventDefault();
 
     }

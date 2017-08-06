@@ -23,7 +23,18 @@ const getBooksByOptions = function (req, res, next) {
         if (err)
             throw err;
 
-        res.render('books', books.docs);
+           if (count == 6)
+           {
+               console.log('rendering');
+               res.render('books', books.docs);
+
+           }
+
+           else
+           {
+               console.log('sending');
+               res.send(books);
+           }
 
      });
 
