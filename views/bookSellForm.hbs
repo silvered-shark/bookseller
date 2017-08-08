@@ -1,66 +1,67 @@
-<form class="form-horizontal" id="bookSellerForm">
+<form class="form-horizontal" id="sellerform">
     <fieldset>
 
         <!-- Form Name -->
-        <legend>New Book</legend>
+        <legend>Seller Form</legend>
 
         <!-- Select Basic -->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="selectbasic">Book</label>
+            <label class="col-md-4 control-label" for="selectsub">Select Book</label>
             <div class="col-md-4">
-                <select id="selectsub" name="selectbasic" class="form-control">
+                <select id="selectsub" name="selectsub" class="form-control">
                     {{#each books}}
 
-                    <option value={{index}}>{{name}}</option>
+                        <option value={{index}}>{{name}}</option>
 
                     {{/each}}
                 </select>
             </div>
         </div>
 
-        <!-- Prepended checkbox -->
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="mobile">Mobile</label>
-            <div class="col-md-4">
-                <div class="input-group">
-      <!--<span class="input-group-addon">-->
-          <!--<input type="checkbox" checked="checked">-->
-      <!--</span>-->
-                    <input id="mobile" name="mobile" class="form-control" type="text" placeholder="Enter Mobile">
-                </div>
-                <p class="help-block"> Public</p>
-            </div>
-        </div>
-
-        <!-- Appended Input-->
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="expectedRate">Expected Rate</label>
-            <div class="col-md-4">
-                <div class="input-group">
-                    <input id="expectedRate" name="expectedRate" class="form-control" placeholder="Expected Rate" type="text" required="">
-                    <span class="input-group-addon">Rs.</span>
-                </div>
-
-            </div>
-        </div>
         <!-- Text input-->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="comment">Comment</label>
+            <label class="col-md-4 control-label" for="comment">Description</label>
             <div class="col-md-4">
-                <input id="comment" name="comment" type="text" placeholder="Comment on edition, condition etc." class="form-control input-md" required="">
+                <input id="comment" name="comment" type="text" placeholder="not more than 100 words" class="form-control input-md" required="">
+
+            </div>
+        </div>
+
+        <!-- Prepended text-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="expPrice">Expected Rate</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-addon">Rs.</span>
+                    <input id="expPrice" name="expPrice" class="form-control" placeholder="in multiples of 10" type="text" required="">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="mobile">Mobile Number</label>
+            <div class="col-md-4">
+                <input id="mobile" name="mobile" type="text" placeholder="10 digits" class="form-control input-md" required="">
 
             </div>
         </div>
 
         <!-- Button -->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="singlebutton">Submit</label>
+            <label class="col-md-4 control-label" for="submit"></label>
             <div class="col-md-4">
-                <button id="singlebutton" type="submit" name="singlebutton" class="btn btn-primary">Button</button>
+                <button id="submit" name="submit" class="btn btn-primary">Submit</button>
             </div>
         </div>
+
+
     </fieldset>
 </form>
+
+
+
 
 
 <div  id="success">
@@ -70,20 +71,20 @@
 <script >
 
 
-    document.getElementById('bookSellerForm').addEventListener('submit', performPostRequest);
+    document.getElementById('sellerform').addEventListener('submit', performPostRequest);
 
     function performPostRequest(e) {
-        var e = document.getElementById("selectsub");
-        var bookName = e.options[e.selectedIndex].text;
 
+        var bookName = $('#selectsub option:selected').text();
+       alert('sdg');
         axios.post('http://localhost:3000/books/'+bookName+'/sellers', {
             mobile : document.getElementById('mobile').value,
-            expectedRate : document.getElementById('expectedRate').value,
+            expPrice : document.getElementById('expPrice').value,
             comment : document.getElementById('comment').value
         })
                 .then(function (response) {
                     document.getElementById("success").innerHTML= '<div class="alert alert-success"><b>Success !!!</b></div>';
-                    console.log(response);
+                    alert('success'+response);
                 })
                 .catch(function (error) {
                     document.getElementById("success").innerHTML = '<div class="alert alert-danger">Failure !!! </div>';
@@ -94,5 +95,4 @@
     }
 
 </script>
-
 

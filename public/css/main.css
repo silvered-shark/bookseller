@@ -6661,27 +6661,60 @@ button.close {
     display: none !important;
   }
 }
-.header .dropdown-submenu {
-  position: relative;
+.header #custom-bootstrap-menu.navbar-default .navbar-brand {
+  color: #777777;
 }
-.header .dropdown-submenu .dropdown-menu {
-  top: 0;
-  left: 100%;
-  margin-top: -1px;
+.header #custom-bootstrap-menu.navbar-default {
+  font-size: 14px;
+  background-color: lightpink;
+  border-width: 1px;
+  border-radius: 4px;
+}
+.header #custom-bootstrap-menu.navbar-default .navbar-nav > li > a {
+  color: #777777;
+  background-color: rgba(248, 248, 248, 0);
+}
+.header #custom-bootstrap-menu.navbar-default .navbar-nav > li > a:hover,
+.header #custom-bootstrap-menu.navbar-default .navbar-nav > li > a:focus {
+  color: #333333;
+  background-color: rgba(248, 248, 248, 0);
+}
+.header #custom-bootstrap-menu.navbar-default .navbar-nav > .active > a,
+.header #custom-bootstrap-menu.navbar-default .navbar-nav > .active > a:hover,
+.header #custom-bootstrap-menu.navbar-default .navbar-nav > .active > a:focus {
+  color: #555555;
+  background-color: #e7e7e7;
+}
+.header #custom-bootstrap-menu.navbar-default .navbar-toggle {
+  border-color: #ddd;
+}
+.header #custom-bootstrap-menu.navbar-default .navbar-toggle:hover,
+.header #custom-bootstrap-menu.navbar-default .navbar-toggle:focus {
+  background-color: #ddd;
+}
+.header #custom-bootstrap-menu.navbar-default .navbar-toggle .icon-bar {
+  background-color: #888;
+}
+.header #custom-bootstrap-menu.navbar-default .navbar-toggle:hover .icon-bar,
+.header #custom-bootstrap-menu.navbar-default .navbar-toggle:focus .icon-bar {
+  background-color: #888;
+}
+.header #facebook {
+  float: right;
 }
 #myFooter {
-  background-color: #373a48;
+  background-color: lightcoral;
   color: white;
 }
 #myFooter .footer-copyright {
-  background-color: #383737;
+  background-color: black;
   padding-top: 3px;
   padding-bottom: 3px;
   text-align: center;
 }
 #myFooter .footer-copyright p {
   margin: 10px;
-  color: #ccc;
+  color: black;
 }
 #myFooter ul {
   list-style-type: none;
@@ -6690,12 +6723,12 @@ button.close {
 }
 #myFooter h5 {
   font-size: 18px;
-  color: white;
+  color: black;
   font-weight: bold;
   margin-top: 30px;
 }
 #myFooter a {
-  color: #d2d1d1;
+  color: black;
   text-decoration: none;
 }
 #myFooter a:hover,
@@ -6711,25 +6744,8 @@ button.close {
   padding-top: 30px;
   padding-bottom: 38px;
 }
-#myFooter .social-networks a {
-  font-size: 32px;
-  margin-right: 5px;
-  margin-left: 5px;
-  color: #f9f9f9;
-  padding: 10px;
-  transition: 0.2s;
-}
 #myFooter .social-networks a:hover {
   text-decoration: none;
-}
-#myFooter .facebook:hover {
-  color: #0077e2;
-}
-#myFooter .google:hover {
-  color: #ef1a1a;
-}
-#myFooter .twitter:hover {
-  color: #00aced;
 }
 @media screen and (max-width: 767px) {
   #myFooter {

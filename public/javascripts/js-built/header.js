@@ -1,1 +1,1 @@
-define("header",["header","jQuery"],function(n,e){var t=function(){e(document).ready(function(){e(".dropdown-submenu a.test").on("click",function(n){e(this).next("ul").toggle(),n.stopPropagation(),n.preventDefault()})})},o=function(){};return{init:t,secondInit:o}});
+define("header",["header","jQuery"],function(n,e){var t=function(){window.onclick=function(n){if(!n.target.matches(".dropbtn")){var e,t=document.getElementsByClassName("dropdown-content");for(e=0;e<t.length;e++){var o=t[e];o.classList.contains("show")&&o.classList.remove("show")}}}};return{init:t}});

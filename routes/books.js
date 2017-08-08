@@ -133,7 +133,7 @@ const getAllSellers = function (req, res, next) {
 
 const addSellerByBook = function (req, res, next) {
 
-    Book.findOne({ name: req.param('bookname') }, function(err, book) {
+    Book.findOne({ name: req.param('bookName') }, function(err, book) {
 
         if (err)
             throw err;
@@ -144,7 +144,7 @@ const addSellerByBook = function (req, res, next) {
             //seller : res.session.user,
             mobile : req.body.mobile,
             comment : req.body.comment,
-            expectedPrice : req.body.expectedRate
+            expPrice : req.body.expPrice
         };
 
         book.sellingInfo.push(SellingBookInfo);
@@ -217,7 +217,7 @@ router.route('/new')
         var options = {};
         options.title = 'Book || Sell';
         res.render('sellbook',options);
-    })
+    });
 
 router.route('/:bookname')
     .get(getByName)
