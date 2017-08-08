@@ -37,8 +37,8 @@
                    return response.json();
                 })
                   .then(function(data) {
-                      console.log(data.docs);
-                      if(data.docs[0]) {
+
+                      if(data.docs) {
 
                           for (var i = 0; i <= 5; i++) {
                               var card = document.createElement('div');
@@ -48,6 +48,7 @@
 
 
                               card += "<div class='col-md-4 bookCard'>";
+
 
                               card += "<h3 class='text-center'>";
 

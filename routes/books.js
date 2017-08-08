@@ -24,17 +24,11 @@ const getBooksByOptions = function (req, res, next) {
             throw err;
 
            if (count == 6)
-           {
-               console.log('rendering');
                res.render('books', books.docs);
 
-           }
-
            else
-           {
-               console.log('sending');
                res.send(books);
-           }
+
 
      });
 
@@ -139,26 +133,28 @@ const getAllSellers = function (req, res, next) {
 
 const addSellerByBook = function (req, res, next) {
 
-    Book.findOne({ name: req.params.bookname }, function (err, book) {
+    Book.findOne({ name: req.param('bookname') }, function(err, book) {
 
         if (err)
             throw err;
 
-
         var SellingBookInfo = {
+
             postedDate : Date.now(),
-            seller : user._id
+            //seller : res.session.user,
+            mobile : req.body.mobile,
+            comment : req.body.comment,
+            expectedPrice : req.body.expectedRate
         };
 
-        book.unshift(SellingBookInfo);
-        book.save(function (err) {
+        book.sellingInfo.push(SellingBookInfo);
+        console.log(book);
+        book.save(function (err1) {
             if (err1)
                 throw err1;
+            res.send('saved content');
         });
     });
-
-    res.json(SellingBookInfo);
-    next();
 
 };
 
@@ -216,19 +212,39 @@ router.route('/')
     .get(getBooksByOptions)
     .post(addOne);
 
-router.route('/{bookname}')
+router.route('/new')
+    .get(function(req, res) {
+        var options = {};
+        options.title = 'Book || Sell';
+        res.render('sellbook',options);
+    })
+
+router.route('/:bookname')
     .get(getByName)
     .delete(deleteByName)
     .put(updateByName);
 
-router.route('/{bookname}/sellers')
+router.route('/:bookname/sellers')
      .get(getAllSellers)
      .post(addSellerByBook);
 
-router.route('/{bookname}/sellers/{sellerId}')
+router.route('/:bookname/sellers/:sellerId')
      .get(getSeller)
      .delete(deleteByBook);
 
 
 
 module.exports = router;
+
+
+function isLoggedIn(req, res, next) {
+    if(req.isAuthenticated())
+    {
+
+        return next();
+    }
+    // flash messages
+    console.log('LogIn first');
+
+}
+

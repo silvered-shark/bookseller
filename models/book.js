@@ -8,6 +8,8 @@ const sellingInfoSchema = new Schema({
 
     postedDate : { type : Date, default : Date.now() },
     expPrice: Number,
+    comment : String,
+    mobile : Number,
     seller : { type : Schema.Types.ObjectId, ref : "user"}
 
 });

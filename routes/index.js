@@ -31,6 +31,8 @@ router.get('/logout', function(req, res){
 router.post('/login',function (req, res, next) {
   //  req.onSignIn();
 });
+
+
 /*
 function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
@@ -51,7 +53,7 @@ router.get('/auth/google/callback',
 
 };
 
-function isLoggedIn(req, res, next) {
+ function isLoggedIn(req, res, next) {
     if(req.isAuthenticated())
     {
 
@@ -61,3 +63,4 @@ function isLoggedIn(req, res, next) {
     res.redirect('/');
 
 }
+
