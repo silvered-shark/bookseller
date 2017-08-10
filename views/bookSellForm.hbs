@@ -2,11 +2,11 @@
     <fieldset>
 
         <!-- Form Name -->
-        <legend>New Book</legend>
+        <legend class="text-center text-uppercase"><h3><b>Sell a Book</b></h3></legend>
 
         <!-- Select Basic -->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="selectbasic">Book</label>
+            <label class="col-md-4 control-label" for="selectbasic"><h4><b>Book</b></h4></label>
             <div class="col-md-4">
                 <select id="selectsub" name="selectbasic" class="form-control">
                     {{#each books}}
@@ -20,7 +20,7 @@
 
         <!-- Prepended checkbox -->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="mobile">Mobile</label>
+            <label class="col-md-4 control-label" for="mobile"><h4><b>Mobile</b></h4></label>
             <div class="col-md-4">
                 <div class="input-group">
       <!--<span class="input-group-addon">-->
@@ -34,18 +34,19 @@
 
         <!-- Appended Input-->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="expectedRate">Expected Rate</label>
+            <label class="col-md-4 control-label" for="expectedRate"><h4><b>Expected Rate</b></h4></label>
             <div class="col-md-4">
                 <div class="input-group">
+                    <span class="input-group-addon"><b>Rs.</b></span>
                     <input id="expectedRate" name="expectedRate" class="form-control" placeholder="Expected Rate" type="text" required="">
-                    <span class="input-group-addon">Rs.</span>
+
                 </div>
 
             </div>
         </div>
         <!-- Text input-->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="comment">Comment</label>
+            <label class="col-md-4 control-label" for="comment"><h4><b>Comment</b></h4></label>
             <div class="col-md-4">
                 <input id="comment" name="comment" type="text" placeholder="Comment on edition, condition etc." class="form-control input-md" required="">
 
@@ -54,9 +55,8 @@
 
         <!-- Button -->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="singlebutton">Submit</label>
             <div class="col-md-4">
-                <button id="singlebutton" type="submit" name="singlebutton" class="btn btn-primary">Button</button>
+                <button id="singlebutton" type="submit" name="singlebutton" class="btn btn-success">Add</button>
             </div>
         </div>
     </fieldset>
