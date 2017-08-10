@@ -1,6 +1,3 @@
-/**
- * Created by sachin on 29/7/17.
- */
 define(['index', 'jQuery'], function (index, $) {
 
     var init = function(){

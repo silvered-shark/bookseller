@@ -55,7 +55,7 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="singlebutton">Single Button</label>
             <div class="col-md-4">
-                <button id="singlebutton" name="singlebutton" class="btn btn-primary" type="submit">Button</button>
+                <button id="sub" name="singlebutton" class="btn btn-primary" type="submit">Button</button>
             </div>
         </div>
     </fieldset>
@@ -69,15 +69,15 @@
     document.getElementById('bookform').addEventListener('submit', performPostRequest);
     function performPostRequest(e) {
 
-        36
 
-        axios.post('http://localhost:3000/books', {
+        axios.post('http://localhost:8080/books', {
             name : document.getElementById('BookName').value,
             type : document.getElementById('bookform').elements["radios"].value,
             description : document.getElementById('textdesc').value
         })
                 .then(function (response) {
-                    document.getElementById("success").innerHTML= '<div class="alert alert-success"><b>Success !!!</b></div>';
+                   // document.getElementById("success").innerHTML= '<div class="alert alert-success"><b>Success !!!</b></div>';
+
                     console.log(response);
                 })
                 .catch(function (error) {
