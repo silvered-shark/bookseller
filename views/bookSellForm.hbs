@@ -56,7 +56,7 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="singlebutton">Submit</label>
             <div class="col-md-4">
-                <button id="singlebutton" type="submit" name="singlebutton" class="btn btn-primary">Button</button>
+                <button id="singlebutton"  name="singlebutton" class="btn btn-primary" type="submit">Button</button>
             </div>
         </div>
     </fieldset>
@@ -70,11 +70,15 @@
 <script >
 
 
-    document.getElementById('bookSellerForm').addEventListener('submit', performPostRequest);
+    document.getElementById('bookSellerForm').addEventListener('submit', addseller);
 
-    function performPostRequest(e) {
+    function addseller(e) {
+
+        e.preventDefault();
+
         var e = document.getElementById("selectsub");
         var bookName = e.options[e.selectedIndex].text;
+        console.log( document.getElementById('expectedRate').value);
 
         axios.post('http://localhost:3000/books/'+bookName+'/sellers', {
             mobile : document.getElementById('mobile').value,
@@ -90,7 +94,7 @@
 
                 });
 
-        e.preventDefault();
+
     }
 
 </script>

@@ -69,8 +69,6 @@
     document.getElementById('bookform').addEventListener('submit', performPostRequest);
     function performPostRequest(e) {
 
-        36
-
         axios.post('http://localhost:3000/books', {
             name : document.getElementById('BookName').value,
             type : document.getElementById('bookform').elements["radios"].value,

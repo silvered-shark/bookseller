@@ -6,17 +6,20 @@ var con_product = mongoose.createConnection("localhost:27017/bookseller");
 
 const sellingInfoSchema = new Schema({
 
-    postedDate : { type : Date, index : true},
-    seller : { type : Schema.Types
-        .ObjectId, ref : "user"}
+    postedDate : { type : Date, default : Date.now() },
+    expPrice: Number,
+    comment : String,
+    mobile : Number,
+    seller : { type : Schema.Types.ObjectId, ref : "user"}
 
 });
 
 
 const productSchema = new Schema ({
 
+    name : { type : String},
+    description: String,
     type : String,
-    expectedRate : Number,
     sellingInfo : [sellingInfoSchema]
 
 });
