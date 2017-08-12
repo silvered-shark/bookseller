@@ -6,7 +6,6 @@ require.config({
         'jQuery': 'jquery.min',
         'bootstrap': 'bootstrap.min',
         'jqBootstrapValidation':'jqBootstrapValidation',
-        'fblogin':'fblogin',
         '_utils':'_utils'
     },
     shim: {

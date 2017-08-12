@@ -2,11 +2,11 @@
     <fieldset>
 
         <!-- Form Name -->
-        <legend>Book Adder</legend>
+        <legend class="text-center text-capitalize"><h2><b>New Book Form</b></h2></legend>
 
         <!-- Text input-->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="Book Name">Book Name</label>
+            <label class="col-md-4 control-label" for="Book Name"><h4><b>Book Name</b></h4></label>
             <div class="col-md-4">
                 <input id="BookName" name="Book Name" type="text" placeholder="Book Name" class="form-control input-md" required="">
 
@@ -15,30 +15,28 @@
 
         <!-- Multiple Radios -->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="radios">Stream</label>
+            <label class="col-md-4 control-label" for="radios"><h4><b>Stream</b></h4></label>
             <div class="col-md-4">
                 <div class="radio">
                     <label for="radios-0">
-                        <input type="radio" name="radios" id="radios-0" value="CSE" checked="checked">
-                        CSE
+                        <h5><input type="radio" name="radios" id="radios-0" value="CSE" checked="checked"><b>CSE</b></h5>
                     </label>
                 </div>
                 <div class="radio">
                     <label for="radios-1">
-                        <input type="radio" name="radios" id="radios-1" value="ECE">
-                        ECE
+                        <h5><input type="radio" name="radios" id="radios-0" value="ECE" checked="checked"><b>ECE</b></h5>
                     </label>
                 </div>
                 <div class="radio">
                     <label for="radios-2">
-                        <input type="radio" name="radios" id="radios-2" value="CSE&ECE">
-                        CSE&amp;ECE
+                        <h5><input type="radio" name="radios" id="radios-0" value="CSE&ECE" checked="checked"><b>CSE&ECE</b></h5>
+
                     </label>
                 </div>
                 <div class="radio">
                     <label for="radios-3">
-                        <input type="radio" name="radios" id="radios-3" value="Other">
-                        Others
+                        <h5><input type="radio" name="radios" id="radios-0" value="Others" checked="checked"><b>Others</b></h5>
+
                     </label>
                 </div>
             </div>
@@ -46,25 +44,19 @@
 
         <!-- Textarea -->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="textarea">Description</label>
+            <label class="col-md-4 control-label" for="textarea"><h4><b>Description</b></h4></label>
             <div class="col-md-4">
-                <textarea class="form-control" id="textdesc" name="textarea">Description</textarea>
+                <textarea class="form-control" id="textdesc" name="textarea"></textarea>
             </div>
         </div>
         <!-- Button -->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="singlebutton">Single Button</label>
             <div class="col-md-4">
-                <button id="singlebutton" name="singlebutton" class="btn btn-primary" type="submit">Button</button>
+                <button id="sub" name="singlebutton" class="btn btn-success text-center" type="submit">Submit</button>
             </div>
         </div>
     </fieldset>
 </form>
-
-
-<div  id="success">
-
-</div>
 <script >
     document.getElementById('bookform').addEventListener('submit', performPostRequest);
     function performPostRequest(e) {
@@ -75,12 +67,11 @@
             description : document.getElementById('textdesc').value
         })
                 .then(function (response) {
-                    document.getElementById("success").innerHTML= '<div class="alert alert-success"><b>Success !!!</b></div>';
+                   sweetAlert("Yeah...","Book Added !!!",'success');
                     console.log(response);
                 })
                 .catch(function (error) {
-                    document.getElementById("success").innerHTML = '<div class="alert alert-danger">Failure !!! </div>';
-
+                    sweetAlert("Oops...","Server Down !!!",'error');
                 });
 
         e.preventDefault();

@@ -45,7 +45,7 @@ const addOne = function (req, res, next) {
 
     var newBook = new Book();
 
-    newBook.name = req.body.name;
+    newBook.name =  req.body.name;
     newBook.description = req.body.description;
     newBook.type = req.body.type;
       console.log(newBook);
