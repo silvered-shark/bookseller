@@ -6,12 +6,11 @@ router.get('/products',function (req, res, next) {
 
 });
 
-router.get('/books',function (req, res, next) {
-    //var options = {};
-    //options.title = 'Book || Sell';
+router.get('/books',isLoggedIn,function (req, res, next) {
+
     Book.find({}, function(err, books) {
         var options = {};
-        options.title = 'Sell Book  '
+        options.title = 'Sell Book';
         options.books = books;
         res.render('bookSellForm', options);
     });

@@ -19,12 +19,12 @@ router.get('/auth/facebook/callback',
     passport.authenticate('facebook', { successRedirect: '/profile',
         failureRedirect: '/'}));
 
-router.get('/profile',isLoggedIn,function (req, res) {
-    if(isLoggedIn) {
+router.get('/profile',function (req, res) {
 
+    if(req.user) {
         res.render('profile', req);
-        console.log("facebook");
     }
+
     else{
         res.redirect('/');
     }

@@ -21,14 +21,18 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">BOOKS<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="/sell/books">SELL</a></li>
+                                    {{#if this.user}}
+                                    <li><a href="/sell/books" id="sell">SELL</a></li>
+                                    {{/if}}
                                     <li><a href="/books">BUY</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">TOOLS<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
+                                    {{#if this.user}}
                                     <li><a href="#">SELL</a></li>
+                                    {{/if}}
                                     <li><a href="#">BUY</a></li>
                                 </ul>
                             </li>
@@ -61,4 +65,6 @@
             header.secondInit();
         });
     });
+</script>
+<script>
 </script>
