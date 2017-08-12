@@ -20,7 +20,14 @@ router.get('/auth/facebook/callback',
         failureRedirect: '/'}));
 
 router.get('/profile',isLoggedIn,function (req, res) {
-     res.redirect('/');
+    if(isLoggedIn) {
+
+        res.render('profile', req);
+        console.log("facebook");
+    }
+    else{
+        res.redirect('/');
+    }
 });
 
 router.get('/logout', function(req, res){

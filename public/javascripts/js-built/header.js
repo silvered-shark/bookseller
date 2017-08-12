@@ -1,1 +1,1 @@
-define("header",["header","jQuery"],function(n,e){var t=function(){e(document).ready(function(){e(".dropdown-submenu a.test").on("click",function(n){e(this).next("ul").toggle(),n.stopPropagation(),n.preventDefault()})})},o=function(){};return{init:t,secondInit:o}});
+define("header",["header","jQuery"],function(n,o){var e=function(){o(document).ready(function(){o(window).scroll(function(){o(this).scrollTop()>500?o(".navbar").addClass("solid"):o(".navbar").removeClass("solid")})})},i=function(){};return{init:e,secondInit:i}});
