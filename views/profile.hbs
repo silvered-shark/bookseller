@@ -1,9 +1,16 @@
 <div class="container">
     <div class="row well well-lg">
-        <div class="col-md-4">
-            <img src="smiley.gif" alt="Smiley face" height="42" width="42">
+        <div class="col-md-2">
+            {{#if this.user.picture}}
+                <img class="circle-image" src="{{this.user.picture}}" >
+            {{else}}
+                <div id="defaultimg" >
+                    {{#with this.user}}
+                    {{/with}}
+                </div>
+            {{/if}}
         </div>
-        <div class="col-md-4">
+        <div class="col-md-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <b>{{this.user.name}}</b>

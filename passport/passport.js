@@ -29,7 +29,7 @@ module.exports = function (passport) {
             clientID: configAuth.facebookAuth.clientID,
             clientSecret: configAuth.facebookAuth.clientSecret,
             callbackURL: configAuth.facebookAuth.callbackURL,
-            profileFields: ['id', 'email', 'gender', 'link',  'name', 'verified']
+            profileFields: ['id', 'email', 'gender', 'link',  'name', 'verified','photos']
        },
         function(accessToken, refreshToken, profile, done) {
             process.nextTick(function () {
@@ -46,11 +46,14 @@ module.exports = function (passport) {
                           newuser.name = profile._json.first_name + " " + profile._json.last_name;
                           newuser.email = profile._json.email;
                           newuser.gender = profile._json.gender;
+                          newuser.picture = profile.photos ? profile.photos[0].value : '/img/faces/unknown-user-pic.jpg';
 
                           newuser.save(function (err) {
                              if(err)
                                  return done(err);
                              else{
+                                 console.log(newuser.picture);
+                                 console.log(newuser.picture);
                                  return done(null, newuser);
                              }
                           });
