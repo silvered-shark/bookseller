@@ -1,12 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
-// defining all routes
-// TODO: setting patch request for books
 var Book = require('../models/book');
-
-
-
 var User = require('../models/user');
 
 
@@ -137,23 +131,38 @@ const addSellerByBook = function (req, res, next) {
 
         if (err)
             throw err;
+        console.log(req.user);
 
         var SellingBookInfo = {
 
             postedDate : Date.now(),
-            //seller : res.session.user,
+            seller : req.user._id,
             mobile : req.body.mobile,
             comment : req.body.comment,
             expectedPrice : req.body.expectedRate
         };
 
+
         book.sellingInfo.push(SellingBookInfo);
-        console.log(book);
         book.save(function (err1) {
             if (err1)
                 throw err1;
-            res.send('saved content');
         });
+
+        User.findById({_id : req.user._id}, function (err, user) {
+
+            if (err)
+                return err;
+
+            user.book.push( book._id);
+            user.save( function (err) {
+                if (err)
+                    throw err;
+                 res.send('saved');
+            });
+
+        });
+
     });
 
 };
@@ -217,7 +226,7 @@ router.route('/new')
         var options = {};
         options.title = 'Book || Sell';
         res.render('sellbook',options);
-    })
+    });
 
 router.route('/:bookname')
     .get(getByName)
