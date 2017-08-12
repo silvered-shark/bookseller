@@ -68,11 +68,15 @@
 <script >
 
 
-    document.getElementById('bookSellerForm').addEventListener('submit', performPostRequest);
+    document.getElementById('bookSellerForm').addEventListener('submit', addseller);
 
-    function performPostRequest(e) {
+    function addseller(e) {
+
+        e.preventDefault();
+
         var e = document.getElementById("selectsub");
         var bookName = e.options[e.selectedIndex].text;
+        console.log( document.getElementById('expectedRate').value);
 
         axios.post('http://localhost:8080/books/'+bookName+'/sellers', {
             mobile : document.getElementById('mobile').value,
@@ -88,7 +92,7 @@
                     sweetAlert("Server Down","error");
                 });
 
-        e.preventDefault();
+
     }
 
 </script>
