@@ -159,15 +159,6 @@ const addSellerByBook = function (req, res, next) {
                 if (err)
                     throw err;
                  res.send('saved');
-            })
-
-            nexmo.message.sendSms('himanshu','+919599798916', 'Hello', function (err, data) {
-                if (err)
-                    return err;
-                else {
-                    console.log(data);
-                    // Optional: add socket.io -- will explain later
-                }
             });
 
         });
