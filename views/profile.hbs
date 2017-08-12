@@ -1,12 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Profile</title>
-</head>
-<body>
-<div>
+<div class="container">
+    <div class="row well well-lg">
+        <div class="col-md-4">
+            <img src="smiley.gif" alt="Smiley face" height="42" width="42">
+        </div>
+        <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <b>{{this.user.name}}</b>
+                    </div>
+                    <div class="panel-body">
+
+                    </div>
+                </div>
+        </div>
+    </div>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+
+            </div>
+            <div class="col-md-4">
+
+            </div>
+            <div class="col-md-4">
+
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <!-- User icon by Icons8 -->
+                    <img class="icon icons8-User" width="64" height="64" src="data:image/png;base64,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">
+                </div>
+                <div class="panel-body">
+                    <p><b>Easy to Login with Facebook</b></p>
+                </div>
+            </div>
+        </div>
+        <div class="animated slipInTop col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <img src="https://png.icons8.com/realtime-protection/ultraviolet/64" title="Realtime Protection" width="64" height="64">
+
+                </div>
+                <div class="panel-body">
+                    <p><b>Your Information is Secure with us.</b></p>
+                </div>
+            </div>
+        </div>
+        <div class="animated slipInRight col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <!-- Money icon by Icons8 -->
+                    <img class="icon icons8-Money" width="64" height="64" src="data:image/png;base64,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">
+
+                </div>
+                <div class="panel-body">
+                    <p><b>Profit Oriented Initiative</b></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 </div>
-</body>
-</html>
+<script>
+    window.onload =  function () {
+       sweetAlert("Welcome","To BookSeller","success");
+    };
+</script>

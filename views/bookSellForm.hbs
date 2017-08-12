@@ -6,7 +6,7 @@
 
         <!-- Select Basic -->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="selectbasic"><h4><b>Book</b></h4></label>
+            <label class="col-md-4 control-label" for="selectbasic"><h4><b>Book Name</b></h4></label>
             <div class="col-md-4">
                 <select id="selectsub" name="selectbasic" class="form-control">
                     {{#each books}}
@@ -28,7 +28,6 @@
       <!--</span>-->
                     <input id="mobile" name="mobile" class="form-control" type="text" placeholder="Enter Mobile">
                 </div>
-                <p class="help-block"> Public</p>
             </div>
         </div>
 
@@ -38,7 +37,7 @@
             <div class="col-md-4">
                 <div class="input-group">
                     <span class="input-group-addon"><b>Rs.</b></span>
-                    <input id="expectedRate" name="expectedRate" class="form-control" placeholder="Expected Rate" type="text" required="">
+                    <input id="expectedRate" name="expectedRate" class="form-control" placeholder="Expected Rate" type="text" required>
 
                 </div>
 
@@ -48,8 +47,7 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="comment"><h4><b>Comment</b></h4></label>
             <div class="col-md-4">
-                <input id="comment" name="comment" type="text" placeholder="Comment on edition, condition etc." class="form-control input-md" required="">
-
+                <input id="comment" name="comment" type="text" placeholder="How's the book" class="form-control input-md" required>
             </div>
         </div>
 
@@ -80,18 +78,18 @@
         var bookName = e.options[e.selectedIndex].text;
         console.log( document.getElementById('expectedRate').value);
 
-        axios.post('http://localhost:3000/books/'+bookName+'/sellers', {
+        axios.post('http://localhost:8080/books/'+bookName+'/sellers', {
             mobile : document.getElementById('mobile').value,
             expectedRate : document.getElementById('expectedRate').value,
             comment : document.getElementById('comment').value
         })
                 .then(function (response) {
-                    document.getElementById("success").innerHTML= '<div class="alert alert-success"><b>Success !!!</b></div>';
                     console.log(response);
+                    sweetAlert("Book Added for Sell","success");
                 })
                 .catch(function (error) {
-                    document.getElementById("success").innerHTML = '<div class="alert alert-danger">Failure !!! </div>';
-
+                    //document.getElementById("success").innerHTML = '<div class="alert alert-danger">Failure !!! </div>';
+                    sweetAlert("Server Down","error");
                 });
 
 
