@@ -19,25 +19,25 @@
             <div class="col-md-4">
                 <div class="radio">
                     <label for="radios-0">
-                        <input type="radio" name="radios" id="radios-0" value="1" checked="checked">
+                        <input type="radio" name="radios" id="radios-0" value="CSE" checked="checked">
                         CSE
                     </label>
                 </div>
                 <div class="radio">
                     <label for="radios-1">
-                        <input type="radio" name="radios" id="radios-1" value="2">
+                        <input type="radio" name="radios" id="radios-1" value="ECE">
                         ECE
                     </label>
                 </div>
                 <div class="radio">
                     <label for="radios-2">
-                        <input type="radio" name="radios" id="radios-2" value="3">
+                        <input type="radio" name="radios" id="radios-2" value="CSE&ECE">
                         CSE&amp;ECE
                     </label>
                 </div>
                 <div class="radio">
                     <label for="radios-3">
-                        <input type="radio" name="radios" id="radios-3" value="4">
+                        <input type="radio" name="radios" id="radios-3" value="Other">
                         Others
                     </label>
                 </div>
@@ -71,12 +71,12 @@
 
         axios.post('http://localhost:3000/books', {
             name : document.getElementById('BookName').value,
-            type : document.getElementsByName('radios').value,
+            type : document.getElementById('bookform').elements["radios"].value,
             description : document.getElementById('textdesc').value
         })
                 .then(function (response) {
                     document.getElementById("success").innerHTML= '<div class="alert alert-success"><b>Success !!!</b></div>';
-
+                    console.log(response);
                 })
                 .catch(function (error) {
                     document.getElementById("success").innerHTML = '<div class="alert alert-danger">Failure !!! </div>';

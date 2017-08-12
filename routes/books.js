@@ -1,30 +1,32 @@
 var express = require('express');
 var router = express.Router();
-
-// defining all routes
-// TODO: setting patch request for books
 var Book = require('../models/book');
-
-
-
 var User = require('../models/user');
 
 
 //TODO: add winston logging for every database operation
 
+const getBooksByOptions = function (req, res, next) {
 
-const getAll = function (req, res, next) {
 
-    Book.find({}, function (err, books) {
+     const bookcount = 6;
+     var option = req.query.type ? { type :  req.query.type } : {};
+     var count =  req.query.count || bookcount;
+
+     Book.paginate( option, { offset : count-6 , limit : 6}, function (err, books) {
         if (err)
-            res.send();
+            throw err;
 
-         //  res.json(books);
-        res.render('books', books);
+           if (count == 6)
+               res.render('books', books.docs);
 
-    });
+           else
+               res.send(books);
 
-};
+
+     });
+
+}
 
 
 const getByName = function (req, res, next) {
@@ -53,9 +55,6 @@ const addOne = function (req, res, next) {
             throw err;
     });
     res.redirect('/');
-
-
-
 
 }
 
@@ -128,26 +127,43 @@ const getAllSellers = function (req, res, next) {
 
 const addSellerByBook = function (req, res, next) {
 
-    Book.findOne({ name: req.params.bookname }, function (err, book) {
+    Book.findOne({ name: req.param('bookname') }, function(err, book) {
 
         if (err)
             throw err;
-
+        console.log(req.user);
 
         var SellingBookInfo = {
+
             postedDate : Date.now(),
-            seller : user._id
+            seller : req.user._id,
+            mobile : req.body.mobile,
+            comment : req.body.comment,
+            expectedPrice : req.body.expectedRate
         };
 
-        book.unshift(SellingBookInfo);
-        book.save(function (err) {
+
+        book.sellingInfo.push(SellingBookInfo);
+        book.save(function (err1) {
             if (err1)
                 throw err1;
         });
-    });
 
-    res.json(SellingBookInfo);
-    next();
+        User.findById({_id : req.user._id}, function (err, user) {
+
+            if (err)
+                return err;
+
+            user.book.push( book._id);
+            user.save( function (err) {
+                if (err)
+                    throw err;
+                 res.send('saved');
+            });
+
+        });
+
+    });
 
 };
 
@@ -202,22 +218,42 @@ const deleteByBook = function (req, res, next) {
 }
 
 router.route('/')
-    .get(getAll)
+    .get(getBooksByOptions)
     .post(addOne);
 
-router.route('/{bookname}')
+router.route('/new')
+    .get(function(req, res) {
+        var options = {};
+        options.title = 'Book || Sell';
+        res.render('sellbook',options);
+    });
+
+router.route('/:bookname')
     .get(getByName)
     .delete(deleteByName)
     .put(updateByName);
 
-router.route('/{bookname}/sellers')
+router.route('/:bookname/sellers')
      .get(getAllSellers)
      .post(addSellerByBook);
 
-router.route('/{bookname}/sellers/{sellerId}')
+router.route('/:bookname/sellers/:sellerId')
      .get(getSeller)
      .delete(deleteByBook);
 
 
 
 module.exports = router;
+
+
+function isLoggedIn(req, res, next) {
+    if(req.isAuthenticated())
+    {
+
+        return next();
+    }
+    // flash messages
+    console.log('LogIn first');
+
+}
+

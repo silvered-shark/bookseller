@@ -1,0 +1,102 @@
+<form class="form-horizontal" id="bookSellerForm">
+    <fieldset>
+
+        <!-- Form Name -->
+        <legend>New Book</legend>
+
+        <!-- Select Basic -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="selectbasic">Book</label>
+            <div class="col-md-4">
+                <select id="selectsub" name="selectbasic" class="form-control">
+                    {{#each books}}
+
+                    <option value={{index}}>{{name}}</option>
+
+                    {{/each}}
+                </select>
+            </div>
+        </div>
+
+        <!-- Prepended checkbox -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="mobile">Mobile</label>
+            <div class="col-md-4">
+                <div class="input-group">
+      <!--<span class="input-group-addon">-->
+          <!--<input type="checkbox" checked="checked">-->
+      <!--</span>-->
+                    <input id="mobile" name="mobile" class="form-control" type="text" placeholder="Enter Mobile">
+                </div>
+                <p class="help-block"> Public</p>
+            </div>
+        </div>
+
+        <!-- Appended Input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="expectedRate">Expected Rate</label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <input id="expectedRate" name="expectedRate" class="form-control" placeholder="Expected Rate" type="text" required="">
+                    <span class="input-group-addon">Rs.</span>
+                </div>
+
+            </div>
+        </div>
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="comment">Comment</label>
+            <div class="col-md-4">
+                <input id="comment" name="comment" type="text" placeholder="Comment on edition, condition etc." class="form-control input-md" required="">
+
+            </div>
+        </div>
+
+        <!-- Button -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="singlebutton">Submit</label>
+            <div class="col-md-4">
+                <button id="singlebutton"  name="singlebutton" class="btn btn-primary" type="submit">Button</button>
+            </div>
+        </div>
+    </fieldset>
+</form>
+
+
+<div  id="success">
+
+</div>
+
+<script >
+
+
+    document.getElementById('bookSellerForm').addEventListener('submit', addseller);
+
+    function addseller(e) {
+
+        e.preventDefault();
+
+        var e = document.getElementById("selectsub");
+        var bookName = e.options[e.selectedIndex].text;
+        console.log( document.getElementById('expectedRate').value);
+
+        axios.post('http://localhost:3000/books/'+bookName+'/sellers', {
+            mobile : document.getElementById('mobile').value,
+            expectedRate : document.getElementById('expectedRate').value,
+            comment : document.getElementById('comment').value
+        })
+                .then(function (response) {
+                    document.getElementById("success").innerHTML= '<div class="alert alert-success"><b>Success !!!</b></div>';
+                    console.log(response);
+                })
+                .catch(function (error) {
+                    document.getElementById("success").innerHTML = '<div class="alert alert-danger">Failure !!! </div>';
+
+                });
+
+
+    }
+
+</script>
+
+

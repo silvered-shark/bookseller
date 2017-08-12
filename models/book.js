@@ -1,12 +1,15 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 var con_book = mongoose.createConnection("localhost:27017/bookseller");
+var mongoosePaginate = require('mongoose-paginate');
 
 
 const sellingInfoSchema = new Schema({
 
     postedDate : { type : Date, default : Date.now() },
     expPrice: Number,
+    comment : String,
+    mobile : Number,
     seller : { type : Schema.Types.ObjectId, ref : "user"}
 
 });
@@ -22,6 +25,7 @@ const bookSchema = new Schema({
 
 });
 
+bookSchema.plugin(mongoosePaginate);
 
 
 

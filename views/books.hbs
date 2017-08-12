@@ -1,23 +1,86 @@
 
 
+<!--Main layout-->
+    <div class="container" id="content">
+        <ul class="nav nav-pills">
+            <li class="active"><a href="?type=CSE" onclick="getBooks(e)">CSE</a></li>
+            <li><a href="?type=ECE"  onclick="getBooks(e)">ECE</a></li>
+            <li><a href="?type=CSE&ECE" onclick="getBooks(e)">CSE & ECE</a></li>
+        </ul>
 
-    <!--Main layout-->
-    <div class="container">
-
-           <div class="row">
+           <div class="row" id="row">
                {{> repeater this}}
+
            </div>
 
-    </div>
-    <!--/.Main layout-->
+           <div class="alert alert-danger" id="danger">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.0/js/mdb.min.js">
-</script>
+           </div>
+
+               <a id="loadmore" class="btn btn-block btn-primary" role="button" >Load More</a>
+
+
+
+
+    </div>
+
 <script>
-    //load common code
-    require(['common','books'], function (common, books) {
-        // load application code for page
-        books.init();
-    });
+
+    var count = 6 ;
+    document.getElementById('loadmore').addEventListener('click', performGetRequest);
+    function performGetRequest(e) {
+
+          count += 6 ;
+
+          fetch('http://localhost:3000/books?count='+count)
+                .then(function(response) {
+                   return response.json();
+                })
+                  .then(function(data) {
+
+                      if(data.docs) {
+
+                          for (var i = 0; i <= 5; i++) {
+                              var card = document.createElement('div');
+
+                              var name = data.docs[i].name;
+                              var description = data.docs[i].description;
+
+
+                              card += "<div class='col-md-4 bookCard'>";
+
+
+                              card += "<h3 class='text-center'>";
+
+                              card += name;
+                              card += "</h3>";
+
+                              card += "<div class='card card-01'>";
+
+                              card += " <div class='card-block'>";
+
+                              card += "<span class='badge-box'><i class='fa fa-check'></i></span>";
+                              card += "<p class='card-text'>";
+                              card += description;
+                              card += "</p>";
+                              card += "</div></div></div>";
+
+                              $("#row").append(card);
+                          }
+                      }
+                      else{
+                          $("#danger").show();
+                      }
+                  })
+                .catch(function (error) {
+                   console.log(error);
+                });
+
+
+
+        e.preventDefault();
+
+    }
+
 </script>
 

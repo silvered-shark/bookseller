@@ -8,8 +8,8 @@ const userSchema = new Schema({
     email : String,
     mobile  : Number,
     book : [{type : Schema.Types.ObjectId, ref: 'Book'}],
+    product : [{type : Schema.Types.ObjectId, ref: 'Product'}],
     gender  : String,
-    product : [{type : Schema.Types.ObjectId, ref :'Product'}],
     facebook : {
         id: String,
         token: String
