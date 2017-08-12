@@ -78,18 +78,18 @@
         var bookName = e.options[e.selectedIndex].text;
         console.log( document.getElementById('expectedRate').value);
 
-        axios.post('http://localhost:8080/books/'+bookName+'/sellers', {
+        axios.post('http://localhost:3000/books/'+bookName+'/sellers', {
             mobile : document.getElementById('mobile').value,
             expectedRate : document.getElementById('expectedRate').value,
             comment : document.getElementById('comment').value
         })
                 .then(function (response) {
                     console.log(response);
-                    sweetAlert("Book Added for Sell","success");
+                    sweetAlert("ThankYou","Book Added for Sell","success");
                 })
                 .catch(function (error) {
                     //document.getElementById("success").innerHTML = '<div class="alert alert-danger">Failure !!! </div>';
-                    sweetAlert("Server Down","error");
+                    sweetAlert("Oh...","Server Down","error");
                 });
 
 
