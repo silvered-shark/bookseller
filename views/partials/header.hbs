@@ -1,62 +1,43 @@
 <div class="header">
 
+    <nav class="navbar navbar-inverse navbar-static-top">
         <div class="container">
-            <nav class="navbar navbar-default">
-                <div class="container-fluid">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#header" aria-expanded="false">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="/">BOOKSELLER</a>
-                    </div>
-
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse" id="header">
-
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">BOOKS<span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    {{#if this.user}}
-                                    <li><a href="/sell/books" id="sell">SELL</a></li>
-                                    {{/if}}
-                                    <li><a href="/books">BUY</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">TOOLS<span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    {{#if this.user}}
-                                    <li><a href="#">SELL</a></li>
-                                    {{/if}}
-                                    <li><a href="#">BUY</a></li>
-                                </ul>
-                            </li>
-                            {{#if this.user}}
-
-                            <li><a href="/logout">Logout</a></li>
-                            {{else}}
-                            <li><a href="/auth/facebook" class="loginBtn loginBtn--facebook" role="button">Login with Facebook</a></li>
-                            {{/if}}
-
+            <div id="logo" class="navbar-brand">
+                <a class="navbar-brand" href="/"><img src="" alt="">
+                BookSeller</a>
+            </div>
+            <div id="navbar3" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Books <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">SELL</a></li>
+                            <li><a href="#">BUY</a></li>
                         </ul>
-                    </div>
-                    <!-- /.navbar-collapse -->
-                </div>
-                <!-- /.container-fluid -->
-            </nav>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Products <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">SELL</a></li>
+                            <li><a href="#">BUY</a></li>
+                        </ul>
+                    </li>
+                    {{#if this.user}}
+                        <li><a href="/logout">Logout</a></li>
+
+                    {{else}}
+                        <li><a href="/auth/facebook">SignUp</a></li>
+
+                    {{/if}}
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
         </div>
+        <!--/.container-fluid -->
+    </nav>
 
 </div>
-        <main class="mdl-layout__content">
-            <div class="page-content"><!-- Your content goes here --></div>
-        </main>
-    </div>
-</div>
+
 <script>
     require(['common'], function (common) {
         // load application code for page
