@@ -61,7 +61,7 @@
     document.getElementById('bookform').addEventListener('submit', performPostRequest);
     function performPostRequest(e) {
 
-        axios.post('http://localhost:3000/books', {
+        axios.post('http://sellbooks.site/books', {
             name : document.getElementById('BookName').value,
             type : document.getElementById('bookform').elements["radios"].value,
             description : document.getElementById('textdesc').value
