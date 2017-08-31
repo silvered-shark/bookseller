@@ -1,43 +1,70 @@
 <div class="header">
-
-    <nav class="navbar navbar-inverse navbar-static-top">
-        <div class="container">
-            <div id="logo" class="navbar-brand">
-                <a class="navbar-brand" href="/"><img src="" alt="">
-                BookSeller</a>
-            </div>
-            <div id="navbar3" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Books <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">SELL</a></li>
-                            <li><a href="#">BUY</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Products <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">SELL</a></li>
-                            <li><a href="#">BUY</a></li>
-                        </ul>
-                    </li>
-                    {{#if this.user}}
-                        <li><a href="/logout">Logout</a></li>
-
-                    {{else}}
-                        <li><a href="/auth/facebook">SignUp</a></li>
-
-                    {{/if}}
-                </ul>
-            </div>
-            <!--/.nav-collapse -->
-        </div>
-        <!--/.container-fluid -->
-    </nav>
+    <ul class="topnav" id="myTopnav">
+        <li><a href=""><img src="https://png.icons8.com/literature/color/60" title="Literature" width="60" height="60"></a></li>
+        <ul class="rightnav">
+            {{#if this.user}}
+                <li><a href="">Sell</a></li>
+                  <li><a href="/profile">Dashboard</a></li>
+            <li><a href="/logout"><b>Logout</b></a></li>
+            {{/if}}
+        </ul>
+        <li class="icon">
+            <a href="javascript:void(0);" style="font-size:15px;" onclick="myFunction()">☰</a>
+        </li>
+    </ul>
 
 </div>
+<style>
+    body {margin:0;}
+    ul.topnav {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+    }
 
+    ul.topnav li {float: left;}
+    ul.rightnav li {float: right;}
+    ul.topnav li a {
+        display: inline-block;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        transition: 0.3s;
+        font-size: 17px;
+    }
+
+    ul.topnav li a:hover {background-color: #555;}
+
+    ul.topnav li.icon {display: none;}
+
+    @media screen and (max-width:680px) {
+        ul.topnav li:not(:first-child) {display: none;}
+        ul.topnav li.icon {
+            float: right;
+            display: inline-block;
+        }
+    }
+
+    @media screen and (max-width:680px) {
+        ul.topnav.responsive {position: relative;}
+        ul.topnav.responsive li.icon {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        ul.topnav.responsive li {
+            float: none;
+            display: inline;
+        }
+        ul.topnav.responsive li a {
+            display: block;
+            text-align: left;
+        }
+    }
+</style>
 <script>
     require(['common'], function (common) {
         // load application code for page
@@ -46,4 +73,14 @@
             header.secondInit();
         });
     });
+</script>
+<script>
+    function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
 </script>
