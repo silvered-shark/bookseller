@@ -1,29 +1,29 @@
+<div class="container" id="content">
 
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#" role="tab" aria-controls="home" aria-expanded="true">CSE</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#" role="tab" aria-controls="profile">ECE</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#" role="tab" aria-controls="profile">CSE&ECE</a>
+        </li>
 
-<!--Main layout-->
-    <div class="container" id="content">
-        <ul class="nav nav-pills">
-            <li class="active"><a href="?type=CSE" onclick="getBooks(e)">CSE</a></li>
-            <li><a href="?type=ECE"  onclick="getBooks(e)">ECE</a></li>
-            <li><a href="?type=CSE&ECE" onclick="getBooks(e)">CSE & ECE</a></li>
-        </ul>
-
-
-
-
-
-           <div class="row" id="row">
-               {{> repeater this}}
-
-           </div>
-
-
-               <a id="loadmore" class="btn btn-block btn-primary" role="button" >Load More</a>
-
-
-
-
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                {{> repeater this}}
+        </div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                {{> repeater this}}
+        </div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            {{> repeater this}}
+        </div>
     </div>
+</div>
 
 <script>
 
@@ -82,6 +82,34 @@
         e.preventDefault();
 
     }
+    (function($) {
 
+        'use strict';
+
+        $(document).on('show.bs.tab', '.nav-tabs-responsive [data-toggle="tab"]', function(e) {
+            var $target = $(e.target);
+            var $tabs = $target.closest('.nav-tabs-responsive');
+            var $current = $target.closest('li');
+            var $parent = $current.closest('li.dropdown');
+            $current = $parent.length > 0 ? $parent : $current;
+            var $next = $current.next();
+            var $prev = $current.prev();
+            var updateDropdownMenu = function($el, position){
+                $el
+                        .find('.dropdown-menu')
+                        .removeClass('pull-xs-left pull-xs-center pull-xs-right')
+                        .addClass( 'pull-xs-' + position );
+            };
+
+            $tabs.find('>li').removeClass('next prev');
+            $prev.addClass('prev');
+            $next.addClass('next');
+
+            updateDropdownMenu( $prev, 'left' );
+            updateDropdownMenu( $current, 'center' );
+            updateDropdownMenu( $next, 'right' );
+        });
+
+    })(jQuery);
 </script>
 

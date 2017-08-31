@@ -1,155 +1,19 @@
 .content{
 
-    header.carousel {
-      height: 50%;
-    }
-
-    header.carousel .item,
-    header.carousel .item.active,
-    header.carousel .carousel-inner {
-      height: 100%;
-    }
-
-    header.carousel .fill {
-      width: 100%;
-      height: 100%;
-      background-position: center;
-      background-size: cover;
-    }
-  .carousel-indicators{
-    @media(min-width:767px) {
-      bottom:10px
-    }
-  }
-  .fill{
-    background-attachment: fixed;
-    background-position: 50% 50%;
+  header {
+    padding: 40px 100px;
   }
 
-  .carousel-caption {
-    @media screen and (min-width: 768px){
-      left: 0%;
-      right: 0%;
-      bottom:0;
-      padding-bottom: 40px;
-      padding-top: 0;
-      background: rgba(0, 0, 0, .4);
-    }
-  }
-  #myCarousel {
-    height: 50vh;
-    @media screen and (min-width: @screen-sm-min) {
-      min-height: 400px;
+  @media (min-width: 992px) {
+    header {
+      padding: 80px 100px;
     }
   }
 
-
-  * {
-        box-sizing: border-box;
-     }
-
-      /* Create three columns of equal width */
-      .columns {
-        float: left;
-        width: 33.3%;
-        padding: 8px;
-      }
-
-      .content {
-        background-color: #EEEEEE;
-      }
-      /* Style the list */
-      .price {
-        list-style-type: none;
-        border: 1px solid #eee;
-        margin: 0;
-        padding: 0;
-        -webkit-transition: 0.3s;
-        transition: 0.3s;
-      }
-
-      /* Add shadows on hover */
-      .price:hover {
-        box-shadow: 0 8px 12px 0 rgba(0,0,0,0.2)
-      }
-
-      /* Pricing header */
-      .price .header {
-        background-color: #111;
-        color: white;
-        font-size: 25px;
-      }
-
-      /* List items */
-      .price li {
-        border-bottom: 1px solid #eee;
-        padding: 20px;
-        text-align: center;
-      }
-
-      /* Grey list item */
-      .price .grey {
-        background-color: #eee;
-        font-size: 20px;
-      }
-
-      /* The "Sign Up" button */
-      .button {
-        background-color: #4CAF50;
-        border: none;
-        color: white;
-        padding: 10px 25px;
-        text-align: center;
-        text-decoration: none;
-        font-size: 18px;
-      }
-
-      /* Change the width of the three columns to 100%
-      (to stack horizontally on small screens) */
-      @media only screen and (max-width: 600px) {
-        .columns {
-          width: 100%;
-        }
-      }
-
-
-      .row-no-gutter {
-        margin-right: 0;
-        margin-left: 0;
-      }
-
-      .row-no-gutter [class*="col-"] {
-        padding-right: 0;
-        padding-left: 0;
-      }
-
-
-
-      .box{width:300px; height:250px; border:1px solid #000; border-radius:2px; float:left; margin:20px 30px;  }
-      .box img{width:300px; height:250px;}
-      .box .overlay{width:300px; height:250px; background:#fff; margin:-250px 0px 0px 0px; opacity:0.5; }
-      .box a{padding:5px 7px; border:1px solid #000; text-decoration:none; font-family:sans-serif; font-size:14px; margin:-140px 0px 0px 15px; display:inline-block; opacity:0; transition:all 0.5s ease-in-out;    cursor: pointer;/* z-index: 10000; */position: absolute;}
-
-
-
-      .box .overlay:hover{opacity:0.1; transition:all 0.5s ease-in-out; width:300px; margin-left:50px; float:right; }
-      .box:hover{box-shadow:0px 0px 10px #6A6A6A; border:1px solid #00DFDF;transition:all 0.5s ease-in-out;}
-      .box:hover a{opacity:1; background:#FFFFFF; color:#000000; margin:-40px 0px 0px 15px;  border-radius:1px; }
-      .box a:hover{border:1px solid #00DFDF;transition:all 0.5s ease-in-out;   }
-}
-
-main {
-  margin-top: 3rem;
-}
-
-main .card {
-  margin-bottom: 2rem;
-}
-
-@media only screen and (max-width: 768px) {
-  .read-more {
-    text-align: center;
+  section {
+    padding: 40px 0;
   }
+
 }
 
 
