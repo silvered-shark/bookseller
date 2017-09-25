@@ -1,11 +1,17 @@
 <div class="header">
     <ul class="topnav" id="myTopnav">
-        <li><a href=""><img src="https://png.icons8.com/literature/color/60" title="Literature" width="60" height="60"></a></li>
-        <ul class="rightnav">
+        <li>
+            <a style="display:inline;margin-left: 0px;margin-top: 5px;" href="">
+                <img src="https://png.icons8.com/school/ultraviolet/64" title="School" width="64" height="64">
+            </a>
+        </li>
+            <ul class="rightnav">
             {{#if this.user}}
+
+                <li><a href="/logout"><b>Logout</b></a></li>
+                <li><a href="/profile">Dashboard</a></li>
+
                 <li><a href="">Sell</a></li>
-                  <li><a href="/profile">Dashboard</a></li>
-            <li><a href="/logout"><b>Logout</b></a></li>
             {{/if}}
         </ul>
         <li class="icon">
@@ -19,9 +25,9 @@
     ul.topnav {
         list-style-type: none;
         margin: 0;
-        padding: 0;
+        padding: 5px;
         overflow: hidden;
-        background-color: #333;
+        background-color: lightseagreen;
     }
 
     ul.topnav li {float: left;}
@@ -35,8 +41,6 @@
         transition: 0.3s;
         font-size: 17px;
     }
-
-    ul.topnav li a:hover {background-color: #555;}
 
     ul.topnav li.icon {display: none;}
 
