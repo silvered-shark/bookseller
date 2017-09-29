@@ -6679,6 +6679,8 @@ button.close {
 #myFooter {
   background-color: #373a48;
   color: white;
+  -ms-flex-item-align: baseline;
+      align-self: baseline;
 }
 #myFooter .footer-copyright {
   background-color: #383737;

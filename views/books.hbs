@@ -1,29 +1,31 @@
 <div class="container" id="content">
 
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
-        <li class="nav-item">
-            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#" role="tab" aria-controls="home" aria-expanded="true">CSE</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#" role="tab" aria-controls="profile">ECE</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#" role="tab" aria-controls="profile">CSE&ECE</a>
-        </li>
+    <main>
 
-    </ul>
-    <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                {{> repeater this}}
-        </div>
-        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                {{> repeater this}}
-        </div>
-        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <input id="tab1" type="radio" name="tabs" checked>
+        <label for="tab1">CSE</label>
+
+        <input id="tab2" type="radio" name="tabs">
+        <label for="tab2">ECE</label>
+
+        <input id="tab3" type="radio" name="tabs">
+        <label for="tab3">BOTH</label>
+
+
+        <section id="content1">
             {{> repeater this}}
-        </div>
-    </div>
+        </section>
+
+        <section id="content2">
+        </section>
+
+        <section id="content3">
+        </section>
+
+
+    </main>
 </div>
+<a role="button" href="" class="btn btn-info btn-md" id="loadmore">Load More</a>
 
 <script>
 
@@ -82,34 +84,91 @@
         e.preventDefault();
 
     }
-    (function($) {
-
-        'use strict';
-
-        $(document).on('show.bs.tab', '.nav-tabs-responsive [data-toggle="tab"]', function(e) {
-            var $target = $(e.target);
-            var $tabs = $target.closest('.nav-tabs-responsive');
-            var $current = $target.closest('li');
-            var $parent = $current.closest('li.dropdown');
-            $current = $parent.length > 0 ? $parent : $current;
-            var $next = $current.next();
-            var $prev = $current.prev();
-            var updateDropdownMenu = function($el, position){
-                $el
-                        .find('.dropdown-menu')
-                        .removeClass('pull-xs-left pull-xs-center pull-xs-right')
-                        .addClass( 'pull-xs-' + position );
-            };
-
-            $tabs.find('>li').removeClass('next prev');
-            $prev.addClass('prev');
-            $next.addClass('next');
-
-            updateDropdownMenu( $prev, 'left' );
-            updateDropdownMenu( $current, 'center' );
-            updateDropdownMenu( $next, 'right' );
-        });
-
-    })(jQuery);
 </script>
+<style>
 
+
+    h1 {
+        padding: 50px 0;
+        font-weight: 400;
+        text-align: center;
+    }
+
+    p {
+        margin: 0 0 20px;
+        line-height: 1.5;
+    }
+
+    main {
+        min-width: 320px;
+        max-width: 800px;
+        padding: 50px;
+        margin: 0 auto;
+        background: #fff;
+    }
+
+    section {
+        display: none;
+        padding: 20px 0 0;
+        border-top: 1px solid #ddd;
+    }
+
+    input {
+        display: none;
+    }
+
+    label {
+        display: inline-block;
+        margin: 0 0 -1px;
+        padding: 15px 25px;
+        font-weight: 600;
+        text-align: center;
+        color: #bbb;
+        border: 1px solid transparent;
+    }
+
+    label:before {
+        font-family: fontawesome;
+        font-weight: normal;
+        margin-right: 10px;
+    }
+
+    label[for*='1']:before { content: '\f1cb'; }
+    label[for*='2']:before { content: '\f17d'; }
+    label[for*='3']:before { content: '\f16b'; }
+    label[for*='4']:before { content: '\f1a9'; }
+
+    label:hover {
+        color: #888;
+        cursor: pointer;
+    }
+
+    input:checked + label {
+        color: #555;
+        border: 1px solid #ddd;
+        border-top: 2px solid orange;
+        border-bottom: 1px solid #fff;
+    }
+
+    #tab1:checked ~ #content1,
+    #tab2:checked ~ #content2,
+    #tab3:checked ~ #content3     {
+        display: block;
+    }
+
+    @media screen and (max-width: 650px) {
+        label {
+            font-size: 0;
+        }
+        label:before {
+            margin: 0;
+            font-size: 18px;
+        }
+    }
+
+    @media screen and (max-width: 400px) {
+        label {
+            padding: 15px;
+        }
+    }
+</style>
