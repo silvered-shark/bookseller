@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="row well well-lg">
+    <div class="row well well-lg p-5 my-3 bg-faded">
         <div class="col-md-2">
             {{#if this.user.picture}}
                 <img class="circle-image" src="{{this.user.picture}}" >
@@ -20,6 +20,26 @@
                     </div>
                 </div>
         </div>
+        <div class="col-md-2">
+                <div class="panel panel-default">
+                    BOOKS
+                </div>
+                <div class="panel-body">
+                    {{#each books}}
+                        <p><b>*{{this.name}}</b></p>
+                    {{/each}}
+                </div>
+        </div>
+        <div class="col-md-2">
+            <div class="panel panel-default">
+                TOOLS
+            </div>
+            <div class="panel-body">
+                 <p></p>
+            </div>
+
+        </div>
+
     </div>
     <br>
     <div class="container">
@@ -42,7 +62,12 @@
 
 </div>
 <script>
+    count =0;
     window.onload =  function () {
-       sweetAlert("Welcome","To BookSeller","success");
+        if(count==0)
+             sweetAlert("Welcome","To BookSeller","success");
+        else
+            count++;
+
     };
 </script>
